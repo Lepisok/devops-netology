@@ -9,7 +9,7 @@ cd is a shell builtin - это встроенная команда bash, лог�
 Решение: ls -l 2>/dev/pts/2(граф. оболочка) или  ls -l 2>/dev/tty2
 5. Получится ли одновременно передать команде файл на stdin и вывести ее stdout в другой файл? Приведите работающий пример.  
 Решение:  
-vagrant@vagrant:~$ echo "Test" > test.txt  
+vagrant@vagrant:~$ echo 'Test' > test.txt  
 vagrant@vagrant:~$ cat < test.txt > test_2.txt  
 vagrant@vagrant:~$ cat test_2.txt   
 Test
