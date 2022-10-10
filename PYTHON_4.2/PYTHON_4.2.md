@@ -40,6 +40,7 @@ for result in result_os.split('\n'):
 
 import os
 
+
 bash_command = ["cd ~/project", "git status"]
 result_os = os.popen(' && '.join(bash_command)).read()
 for result in result_os.split('\n'):
