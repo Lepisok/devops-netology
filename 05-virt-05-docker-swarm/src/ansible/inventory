@@ -1,0 +1,19 @@
+[nodes:children]
+managers
+workers
+
+[managers:children]
+active
+standby
+
+[active]
+node01.netology.yc ansible_host=158.160.32.247
+
+[standby]
+node02.netology.yc ansible_host=51.250.88.33
+node03.netology.yc ansible_host=158.160.34.59
+
+[workers]
+node04.netology.yc ansible_host=51.250.65.20
+node05.netology.yc ansible_host=84.201.175.92
+node06.netology.yc ansible_host=158.160.36.169
