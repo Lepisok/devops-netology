@@ -32,11 +32,11 @@
 Приведите:
 - итоговый список БД после выполнения пунктов выше,
 ![img_1.png](img/img_1.png)
-- описание таблиц (describe)
-![img_2.png](img/img_2.png)
-- SQL-запрос для выдачи списка пользователей с правами над таблицами test_db
-SELECT table_name,grantee,privilege_type FROM information_schema.table_privileges WHERE table_schema NOT IN ('information_schema','pg_catalog');
-- список пользователей с правами над таблицами test_db
+- описание таблиц (describe)  
+![img_2.png](img/img_2.png)  
+- SQL-запрос для выдачи списка пользователей с правами над таблицами test_db  
+Запрос: SELECT table_name,grantee,privilege_type FROM information_schema.table_privileges WHERE table_schema NOT IN ('information_schema','pg_catalog');  
+- список пользователей с правами над таблицами test_db  
 ![img_3.png](img/img_3.png)
 ## Задача 3
 
@@ -82,7 +82,7 @@ SELECT table_name,grantee,privilege_type FROM information_schema.table_privilege
 |Иоганн Себастьян Бах| Гитара |
 
 Приведите SQL-запросы для выполнения данных операций.
-![img_5.png](img/img_5.png)
+![img_5.png](img/img_5.png)  
 Приведите SQL-запрос для выдачи всех пользователей, которые совершили заказ, а также вывод данного запроса.  
 ![img_6.png](img/img_6.png)  
 Подсказка - используйте директиву `UPDATE`.  
@@ -100,14 +100,14 @@ SELECT table_name,grantee,privilege_type FROM information_schema.table_privilege
 - 244 - средний размер каждой строки в байтах
 ## Задача 6
 
-Создайте бэкап БД test_db и поместите его в volume, предназначенный для бэкапов (см. Задачу 1).
-![img_8.png](img/img_8.png)
-Остановите контейнер с PostgreSQL (но не удаляйте volumes).
-![img_9.png](img/img_9.png)
-Поднимите новый пустой контейнер с PostgreSQL.
-![img_10.png](img/img_10.png)
-Восстановите БД test_db в новом контейнере.
-![img_11.png](img/img_11.png)
+Создайте бэкап БД test_db и поместите его в volume, предназначенный для бэкапов (см. Задачу 1).  
+![img_8.png](img/img_8.png)  
+Остановите контейнер с PostgreSQL (но не удаляйте volumes).  
+![img_9.png](img/img_9.png)  
+Поднимите новый пустой контейнер с PostgreSQL.  
+![img_10.png](img/img_10.png)  
+Восстановите БД test_db в новом контейнере.  
+![img_11.png](img/img_11.png)  
 Приведите список операций, который вы применяли для бэкапа данных и восстановления. 
 
 ---
