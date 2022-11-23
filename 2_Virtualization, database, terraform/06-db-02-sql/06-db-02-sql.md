@@ -8,7 +8,7 @@
 Приведите получившуюся команду или docker-compose манифест.
 
 Решение:  
-![img.png](img.png)
+![img.png](img/img.png)
 ## Задача 2
 
 В БД из задачи 1: 
@@ -31,13 +31,13 @@
 
 Приведите:
 - итоговый список БД после выполнения пунктов выше,
-![img.png](img_1.png)
+![img_1.png](img/img_1.png)
 - описание таблиц (describe)
-![img.png](img_2.png)
+![img_2.png](img/img_2.png)
 - SQL-запрос для выдачи списка пользователей с правами над таблицами test_db
 SELECT table_name,grantee,privilege_type FROM information_schema.table_privileges WHERE table_schema NOT IN ('information_schema','pg_catalog');
 - список пользователей с правами над таблицами test_db
-![img_3.png](img_3.png)
+![img_3.png](img/img_3.png)
 ## Задача 3
 
 Используя SQL синтаксис - наполните таблицы следующими тестовыми данными:
@@ -67,7 +67,7 @@ SELECT table_name,grantee,privilege_type FROM information_schema.table_privilege
 - приведите в ответе:
     - запросы 
     - результаты их выполнения.  
-![img_4.png](img_4.png)
+![img_4.png](img/img_4.png)
 
 ## Задача 4
 
@@ -82,12 +82,10 @@ SELECT table_name,grantee,privilege_type FROM information_schema.table_privilege
 |Иоганн Себастьян Бах| Гитара |
 
 Приведите SQL-запросы для выполнения данных операций.
-![img_5.png](img_5.png)
- ![img_6.png](img_6.png)
+![img_5.png](img/img_5.png)
 Приведите SQL-запрос для выдачи всех пользователей, которые совершили заказ, а также вывод данного запроса.  
-![img_7.png](img_7.png)  
+![img_6.png](img/img_6.png)  
 Подсказка - используйте директиву `UPDATE`.  
- 
 
 ## Задача 5
 
@@ -95,7 +93,7 @@ SELECT table_name,grantee,privilege_type FROM information_schema.table_privilege
 (используя директиву EXPLAIN).
 
 Приведите получившийся результат и объясните что значат полученные значения.
-![img_8.png](img_8.png)  
+![img_7.png](img/img_7.png)
 - 0.00 - стоимость получения первого значения
 - 13.00 - стоимость получения всех строк
 - 298 - количество проверенных строк
@@ -103,19 +101,13 @@ SELECT table_name,grantee,privilege_type FROM information_schema.table_privilege
 ## Задача 6
 
 Создайте бэкап БД test_db и поместите его в volume, предназначенный для бэкапов (см. Задачу 1).
-
+![img_8.png](img/img_8.png)
 Остановите контейнер с PostgreSQL (но не удаляйте volumes).
-
+![img_9.png](img/img_9.png)
 Поднимите новый пустой контейнер с PostgreSQL.
-
+![img_10.png](img/img_10.png)
 Восстановите БД test_db в новом контейнере.
-
+![img_11.png](img/img_11.png)
 Приведите список операций, который вы применяли для бэкапа данных и восстановления. 
-
----
-
-### Как cдавать задание
-
-Выполненное домашнее задание пришлите ссылкой на .md-файл в вашем репозитории.
 
 ---
