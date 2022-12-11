@@ -38,7 +38,7 @@ path.logs: /var/lib/opensearch/log
 #
 # Path to snapshot
 #
-path.repo: /var/lib/elasticsearch/snapshots
+path.repo: /var/lib/opensearch/snapshots
 #
 # ----------------------------------- Memory -----------------------------------
 #
