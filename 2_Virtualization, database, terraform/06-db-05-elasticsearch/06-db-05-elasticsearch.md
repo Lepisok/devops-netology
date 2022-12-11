@@ -51,7 +51,7 @@ https://hub.docker.com/repository/docker/lepisok/opensearch
 | ind-3 | 2 | 4 |  
 
 [lepis@lepis]:~/Home_work$ curl -X PUT localhost:9200/ind-1 -u opensearch -H 'Content-Type: application/json' -d '{"settings":{"number_of_shards": 2,"number_of_replicas": 1}}'  
-[lepis@lepis]:~/Home_work$ curl -X PUT localhost:9200/ind-2 -u opensearch -H 'Content-Type: application/json' -d '{"settings":{"number_of_shards": 2,"number_of_replicas": 1}}'  
+[lepis@lepis]:~/Home_work$ curl -X PUT localhost:9200/ind-2 -u opensearch -H 'Content-Type: application/json' -d '{"settings":{"number_of_shards": 2,"number_of_replicas": 1}}'   
 [lepis@lepis]:~/Home_work$ curl -X PUT localhost:9200/ind-3 -u opensearch -H 'Content-Type: application/json' -d '{"settings":{"number_of_shards": 4,"number_of_replicas": 2}}'  
 
 Получите список индексов и их статусов, используя API и **приведите в ответе** на задание.  
