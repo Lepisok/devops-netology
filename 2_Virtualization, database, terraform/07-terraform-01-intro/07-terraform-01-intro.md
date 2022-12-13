@@ -99,9 +99,3 @@ is 1.3.6. You can update by downloading from www.terraform.io/downloads.html
 ```
 
 ---
-
-### Как cдавать задание
-
-Выполненное домашнее задание пришлите ссылкой на .md-файл в вашем репозитории.
-
----
