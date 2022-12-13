@@ -45,7 +45,7 @@
 
 Решение:  
 1. Ответ дан в разделе "Легенда"  
-2. Ansible, Terraform, Packer
+2. Ansible, Terraform, Packer, Docker
 3. Да, добавил бы мониторинг grafana+prometheus+elasticsearch(opensearch), как без него =)
 
 Если для ответа на эти вопросы недостаточно информации, то напишите какие моменты уточните на совещании.
