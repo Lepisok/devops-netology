@@ -28,8 +28,9 @@ Video Memory: 4MB
 3. Ознакомьтесь с возможностями конфигурации VirtualBox через Vagrantfile: [документация](https://www.vagrantup.com/docs/providers/virtualbox/configuration.html). Как добавить оперативной памяти или ресурсов процессора виртуальной машине?  
 
 Решение:  
-
+```
 config.vm.provider "virtualbox" do |v| v.memory = 1024 v.cpus = 2 end  
+```
 
 4. Команда `vagrant ssh` из директории, в которой содержится Vagrantfile, позволит вам оказаться внутри виртуальной машины без каких-либо дополнительных настроек. Попрактикуйтесь в выполнении обсуждаемых команд в терминале Ubuntu.  
 
