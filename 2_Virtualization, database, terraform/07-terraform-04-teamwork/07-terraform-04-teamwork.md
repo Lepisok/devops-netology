@@ -33,8 +33,8 @@
 В качестве результата приложите ссылку на файлы `server.yaml` и `atlantis.yaml`.  
 
 Решение:  
-[id]: atlantis.yml  
-[id]: server.yml  
+(atlantis.yml)  
+(server.yml)    
 ## Задача 3. Знакомство с каталогом модулей. 
 
 1. В [каталоге модулей](https://registry.terraform.io/browse/modules) найдите официальный модуль от aws для создания
