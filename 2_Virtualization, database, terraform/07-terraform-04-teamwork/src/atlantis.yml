@@ -1,0 +1,22 @@
+version: 3
+parallel_plan: true
+parallel_apply: true
+projects:
+- name: netology-stage
+  branch: /main/
+  dir: .
+  workspace: default
+  terraform_version: v1.3.4
+  delete_source_branch_on_merge: truee
+  autoplan:
+    when_modified: ["*.tf", "../modules/**/*.tf"]
+    enabled: true
+- name: netology-prod
+  branch: /main/
+  dir: .
+  workspace: default
+  terraform_version: v1.3.4
+  delete_source_branch_on_merge: true
+  autoplan:
+    when_modified: ["*.tf", "../modules/**/*.tf"]
+    enabled: true

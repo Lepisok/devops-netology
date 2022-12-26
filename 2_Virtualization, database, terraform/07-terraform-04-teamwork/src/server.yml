@@ -1,0 +1,19 @@
+repos:
+- id: https://github.com/Lepisok/devops-netology
+  branch: main
+  workflow: custom
+  allowed_overrides: [workflow]
+  allow_custom_workflows: true
+workflows:
+  custom:
+    plan:
+      steps:
+      - run: my-custom-command arg1 arg2
+      - init
+      - plan:
+          extra_args: ["-lock", "false"]
+      - run: my-custom-command arg1 arg2
+    apply:
+      steps:
+      - run: echo hi
+      - apply
