@@ -33,8 +33,8 @@
 В качестве результата приложите ссылку на файлы `server.yaml` и `atlantis.yaml`.  
 
 Решение:  
-(atlantis.yml)  
-(server.yml)    
+[server.yml](https://github.com/Lepisok/devops-netology/blob/main/2_Virtualization%2C%20database%2C%20terraform/07-terraform-04-teamwork/src/server.yml)  
+[atlantis.yml](https://github.com/Lepisok/devops-netology/blob/main/2_Virtualization%2C%20database%2C%20terraform/07-terraform-04-teamwork/src/atlantis.yml)    
 ## Задача 3. Знакомство с каталогом модулей. 
 
 1. В [каталоге модулей](https://registry.terraform.io/browse/modules) найдите официальный модуль от aws для создания
