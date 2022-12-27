@@ -49,7 +49,7 @@
 Решение: 
 1) Так как модулей в yandex-cloud нет, создал свой модуль для создания сервисного аккаунта с ролью "editor"  
 2) При большом проекте, будет удобней использовать модуль. Будет удобнее править выделяемые ресурсы  
-3) [iam.yaml](https://github.com/Lepisok/devops-netology/blob/main/2_Virtualization%2C%20database%2C%20terraform/07-terraform-04-teamwork/terraform/modules/iam/iam.tf) - модуль
+3) [iam.yaml](https://github.com/Lepisok/devops-netology/blob/main/2_Virtualization%2C%20database%2C%20terraform/07-terraform-04-teamwork/terraform/modules/iam/iam.tf) - модуль  
 [iam.yaml](https://github.com/Lepisok/devops-netology/blob/main/2_Virtualization%2C%20database%2C%20terraform/07-terraform-04-teamwork/terraform/iam.tf) - подключение модуля
 
 ---
