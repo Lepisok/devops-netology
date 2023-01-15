@@ -21,4 +21,24 @@
     * С каким другим параметром конфликтует `name`? Приложите строчку кода, в которой это указано.
     * Какая максимальная длина имени? 
     * Какому регулярному выражению должно подчиняться имя? 
-    
+
+Решение:  
+1. Конфликтует с параметром `name_prefix`
+```
+"name": {
+  Type:          schema.TypeString,
+  Optional:      true,
+  Computed:      true,
+  ForceNew:      true,
+  ConflictsWith: []string{"name_prefix"},
+```  
+2. Ммаксимальная длина имени - 80 символов
+3. Регулярное выражение  
+```
+		if fifoQueue {
+			re = regexp.MustCompile(`^[a-zA-Z0-9_-]{1,75}\.fifo$`)
+		} else {
+			re = regexp.MustCompile(`^[a-zA-Z0-9_-]{1,80}$`)
+		}
+
+```
