@@ -5,6 +5,7 @@
 2. Могут ли файлы, являющиеся жесткой ссылкой на один объект, иметь разные права доступа и владельца? Почему?  
 Решение: Нет, у них один номер Innode
 3. Сделайте vagrant destroy на имеющийся инстанс Ubuntu. Замените содержимое Vagrantfile следующим:
+```
 Vagrant.configure("2") do |config|  
 config.vm.box = "bento/ubuntu-20.04"  
   config.vm.provider :virtualbox do |vb|  
@@ -15,11 +16,12 @@ config.vm.box = "bento/ubuntu-20.04"
     vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', lvm_experiments_disk0_path]  
     vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', 2, '--device', 0, '--type', 'hdd', '--medium', lvm_experiments_disk1_path]  
   end  
-end  
+end
+```  
 Решение:  
 ![img.png](img/img.png)  
 4. Используя fdisk, разбейте первый диск на 2 раздела: 2 Гб, оставшееся пространство.  
-Решение: ![img_1.png](img/img_1.png)
+Решение: ![img_1.png](img/img_1.png)  
 5. Используя sfdisk, перенесите данную таблицу разделов на второй диск.  
 Решение: ![img_2.png](img/img_2.png)  
 6. Соберите mdadm RAID1 на паре разделов 2 Гб.  
