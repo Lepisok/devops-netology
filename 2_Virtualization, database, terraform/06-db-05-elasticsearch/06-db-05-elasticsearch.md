@@ -103,8 +103,7 @@ lepis@lepis:~/Home_work$ curl -X PUT localhost:9200/test -H 'Content-Type: appli
 ![img_8.png](img/img_8.png)  
 
 [Восстановите](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-restore-snapshot.html) состояние
-кластера `elasticsearch` из `snapshot`, созданного ранее. 
-
+кластера `elasticsearch` из `snapshot`, созданного ранее.  
 **Приведите в ответе** запрос к API восстановления и итоговый список индексов.  
 ![img_9.png](img/img_9.png)  
 ![img_10.png](img/img_10.png)  
