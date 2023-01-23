@@ -7,14 +7,104 @@
 
 ## Основная часть
 1. Попробуйте запустить playbook на окружении из `test.yml`, зафиксируйте какое значение имеет факт `some_fact` для указанного хоста при выполнении playbook'a.  
-Решение: ![img.png](img.png)  
-2. Найдите файл с переменными (group_vars) в котором задаётся найденное в первом пункте значение и поменяйте его на 'all default fact'.  
-Решение: ![img.png](img1.png)  
-3. Воспользуйтесь подготовленным (используется `docker`) или создайте собственное окружение для проведения дальнейших испытаний.  
 Решение:  
-4. Проведите запуск playbook на окружении из `prod.yml`. Зафиксируйте полученные значения `some_fact` для каждого из `managed host`.
-5. Добавьте факты в `group_vars` каждой из групп хостов так, чтобы для `some_fact` получились следующие значения: для `deb` - 'deb default fact', для `el` - 'el default fact'.
-6.  Повторите запуск playbook на окружении `prod.yml`. Убедитесь, что выдаются корректные значения для всех хостов.
+```
+lepis@lepis:~/Downloads/mnt-homeworks-MNT-video/08-ansible-01-base/playbook$ ansible-playbook -i inventory/test.yml site.yml
+
+PLAY [Print os facts] ***********************************************************************************************************************************
+
+TASK [Gathering Facts] **********************************************************************************************************************************
+ok: [localhost]
+
+TASK [Print OS] *****************************************************************************************************************************************
+ok: [localhost] => {
+    "msg": "Ubuntu"
+}
+
+TASK [Print fact] ***************************************************************************************************************************************
+ok: [localhost] => {
+    "msg": 12
+}
+
+PLAY RECAP **********************************************************************************************************************************************
+localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0 
+```
+2. Найдите файл с переменными (group_vars) в котором задаётся найденное в первом пункте значение и поменяйте его на 'all default fact'.  
+Решение: ![img.png](img.png)
+3. Воспользуйтесь подготовленным (используется `docker`) или создайте собственное окружение для проведения дальнейших испытаний.  
+Решение:  [docker-compose.yml](https://github.com/Lepisok/devops-netology/blob/main/3_CI%2C%20monitoring%20and%20settings%20management/08-ansible-01-base/src/docker-compose.yml)  
+4. Проведите запуск playbook на окружении из `prod.yml`. Зафиксируйте полученные значения `some_fact` для каждого из `managed host`.  
+Решение:  
+```
+lepis@lepis:~/Downloads/mnt-homeworks-MNT-video/08-ansible-01-base/playbook$ sudo ansible-playbook -i inventory/prod.yml site.yml
+
+PLAY [Print os facts] ***********************************************************************************************************************************
+
+TASK [Gathering Facts] **********************************************************************************************************************************
+[DEPRECATION WARNING]: Distribution ubuntu 20.04 on host ubuntu should use /usr/bin/python3, but is using /usr/bin/python for backward compatibility 
+with prior Ansible releases. A future Ansible release will default to using the discovered platform python for this host. See 
+https://docs.ansible.com/ansible/2.10/reference_appendices/interpreter_discovery.html for more information. This feature will be removed in version 
+2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [ubuntu]
+ok: [centos7]
+
+TASK [Print OS] *****************************************************************************************************************************************
+ok: [centos7] => {
+    "msg": "CentOS"
+}
+ok: [ubuntu] => {
+    "msg": "Ubuntu"
+}
+
+TASK [Print fact] ***************************************************************************************************************************************
+ok: [centos7] => {
+    "msg": "el"
+}
+ok: [ubuntu] => {
+    "msg": "deb"
+}
+
+PLAY RECAP **********************************************************************************************************************************************
+centos7                    : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ubuntu                     : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0                      : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+```
+5. Добавьте факты в `group_vars` каждой из групп хостов так, чтобы для `some_fact` получились следующие значения: для `deb` - 'deb default fact', для `el` - 'el default fact'.  
+Решение:  ![img_1.png](img_1.png)  
+6.  Повторите запуск playbook на окружении `prod.yml`. Убедитесь, что выдаются корректные значения для всех хостов.  
+Решение:  
+```
+lepis@lepis:~/Downloads/mnt-homeworks-MNT-video/08-ansible-01-base/playbook$ sudo ansible-playbook -i inventory/prod.yml site.yml
+
+PLAY [Print os facts] ***********************************************************************************************************************************
+
+TASK [Gathering Facts] **********************************************************************************************************************************
+[DEPRECATION WARNING]: Distribution ubuntu 20.04 on host ubuntu should use /usr/bin/python3, but is using /usr/bin/python for backward compatibility 
+with prior Ansible releases. A future Ansible release will default to using the discovered platform python for this host. See 
+https://docs.ansible.com/ansible/2.10/reference_appendices/interpreter_discovery.html for more information. This feature will be removed in version 
+2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [ubuntu]
+ok: [centos7]
+
+TASK [Print OS] *****************************************************************************************************************************************
+ok: [centos7] => {
+    "msg": "CentOS"
+}
+ok: [ubuntu] => {
+    "msg": "Ubuntu"
+}
+
+TASK [Print fact] ***************************************************************************************************************************************
+ok: [centos7] => {
+    "msg": "el default fact"
+}
+ok: [ubuntu] => {
+    "msg": "deb default fact"
+}
+
+PLAY RECAP **********************************************************************************************************************************************
+centos7                    : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ubuntu                     : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0 
+```  
 7. При помощи `ansible-vault` зашифруйте факты в `group_vars/deb` и `group_vars/el` с паролем `netology`.
 8. Запустите playbook на окружении `prod.yml`. При запуске `ansible` должен запросить у вас пароль. Убедитесь в работоспособности.
 9. Посмотрите при помощи `ansible-doc` список плагинов для подключения. Выберите подходящий для работы на `control node`.

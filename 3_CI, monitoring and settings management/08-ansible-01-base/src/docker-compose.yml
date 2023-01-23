@@ -8,6 +8,6 @@ services:
 
   ubuntu:
     container_name: ubuntu
-    image: eclipse/ubuntu_python
+    image: matthewfeickert/docker-python3-ubuntu
     restart: on-failure
     command: ["sleep","infinity"]
