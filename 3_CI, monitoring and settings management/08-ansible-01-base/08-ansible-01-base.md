@@ -30,7 +30,8 @@ PLAY RECAP *********************************************************************
 localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0 
 ```
 2. Найдите файл с переменными (group_vars) в котором задаётся найденное в первом пункте значение и поменяйте его на 'all default fact'.  
-Решение: ![img.png](img.png)
+Решение:  
+![img.png](img.png)
 3. Воспользуйтесь подготовленным (используется `docker`) или создайте собственное окружение для проведения дальнейших испытаний.  
 Решение:  [docker-compose.yml](https://github.com/Lepisok/devops-netology/blob/main/3_CI%2C%20monitoring%20and%20settings%20management/08-ansible-01-base/src/docker-compose.yml)  
 4. Проведите запуск playbook на окружении из `prod.yml`. Зафиксируйте полученные значения `some_fact` для каждого из `managed host`.  
