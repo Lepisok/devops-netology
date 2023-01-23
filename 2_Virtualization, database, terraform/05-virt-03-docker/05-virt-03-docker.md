@@ -58,7 +58,8 @@ Docker, для данного решения его будет достаточ�
 - Подключитесь во второй контейнер и отобразите листинг и содержание файлов в ```/data``` контейнера.
 
 
-Решение:
+Решение:  
+```
 vagrant@vagrant:~$ docker run -it -d -v /data:/data centos:latest  
 Unable to find image 'centos:latest' locally  
 latest: Pulling from library/centos  
@@ -86,3 +87,4 @@ drwxr-xr-x 2 root root 4096 Nov  5 08:58 .
 drwxr-xr-x 1 root root 4096 Nov  5 08:56 ..  
 -rw-r--r-- 1 root root    0 Nov  5 08:58 test_1  
 -rw-r--r-- 1 root root    0 Nov  5 08:58 test_2
+```

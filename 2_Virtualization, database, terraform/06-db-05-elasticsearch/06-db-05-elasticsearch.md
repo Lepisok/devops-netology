@@ -49,11 +49,11 @@ https://hub.docker.com/repository/docker/lepisok/opensearch
 | ind-1| 0 | 1 |
 | ind-2 | 1 | 2 |
 | ind-3 | 2 | 4 |  
-
-[lepis@lepis]:/Home_work$ curl -X PUT localhost:9200/ind-1 -u opensearch -H 'Content-Type: application/json' -d '{"settings":{"number_of_shards": 2,"number_of_replicas": 1}}'  
-[lepis@lepis]:/Home_work$ curl -X PUT localhost:9200/ind-2 -u opensearch -H 'Content-Type: application/json' -d '{"settings":{"number_of_shards": 2,"number_of_replicas": 1}}'   
-[lepis@lepis]:/Home_work$ curl -X PUT localhost:9200/ind-3 -u opensearch -H 'Content-Type: application/json' -d '{"settings":{"number_of_shards": 4,"number_of_replicas": 2}}'  
-
+```
+lepis@lepis:/Home_work$ curl -X PUT localhost:9200/ind-1 -u opensearch -H 'Content-Type: application/json' -d '{"settings":{"number_of_shards": 2,"number_of_replicas": 1}}'  
+lepis@lepis:/Home_work$ curl -X PUT localhost:9200/ind-2 -u opensearch -H 'Content-Type: application/json' -d '{"settings":{"number_of_shards": 2,"number_of_replicas": 1}}'   
+lepis@lepis:/Home_work$ curl -X PUT localhost:9200/ind-3 -u opensearch -H 'Content-Type: application/json' -d '{"settings":{"number_of_shards": 4,"number_of_replicas": 2}}'  
+```
 Получите список индексов и их статусов, используя API и **приведите в ответе** на задание.  
 ![img_2.png](img/img_2.png)  
 Получите состояние кластера `elasticsearch`, используя API.  
@@ -82,12 +82,15 @@ https://hub.docker.com/repository/docker/lepisok/opensearch
 данную директорию как `snapshot repository` c именем `netology_backup`.  
 
 **Приведите в ответе** запрос API и результат вызова API для создания репозитория.  
-[lepis@lepis]:~/Home_work$ curl -X PUT localhost:9200/_snapshot/netology_backup -H 'Content-Type: application/json' -d '{"type": "fs", "settings": { "location": "/var/lib/opensearch/snapshots"}}'  
+```
+lepis@lepis:~/Home_work$ curl -X PUT localhost:9200/_snapshot/netology_backup -H 'Content-Type: application/json' -d '{"type": "fs", "settings": { "location": "/var/lib/opensearch/snapshots"}}'  
 {"acknowledged":true}  
-
+```
 Создайте индекс `test` с 0 реплик и 1 шардом и **приведите в ответе** список индексов.  
-[lepis@lepis]:~/Home_work$ curl -X PUT localhost:9200/test -H 'Content-Type: application/json' -d '{"settings": {"number_of_shards": 1, "number_of_replicas": 0}}'  
+```
+lepis@lepis:~/Home_work$ curl -X PUT localhost:9200/test -H 'Content-Type: application/json' -d '{"settings": {"number_of_shards": 1, "number_of_replicas": 0}}'  
 {"acknowledged":true,"shards_acknowledged":true,"index":"test"}  
+```
 ![img_6.png](img/img_6.png)  
 
 [Создайте `snapshot`](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html) 
@@ -106,4 +109,4 @@ https://hub.docker.com/repository/docker/lepisok/opensearch
 ![img_9.png](img/img_9.png)  
 ![img_10.png](img/img_10.png)  
 ![img_11.png](img/img_11.png)  
----
+

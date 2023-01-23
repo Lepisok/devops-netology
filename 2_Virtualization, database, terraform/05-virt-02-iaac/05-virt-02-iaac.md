@@ -29,10 +29,11 @@
 *Приложить вывод команд установленных версий каждой из программ, оформленный в markdown.*
 
 Решение:
-
+```
 vagrant@vagrant:~$ vagrant --version  
 Vagrant 2.3.2  
 vagrant@vagrant:~$ ansible --version  
 ansible 2.9.6  
 vagrant@vagrant:~$ vboxmanage --version   
 6.0.24r139119  
+```
