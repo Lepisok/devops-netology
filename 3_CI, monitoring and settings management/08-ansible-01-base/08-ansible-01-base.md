@@ -270,7 +270,7 @@ Encryption successful
           3538386261373833330a346162323666366335646264366566363533383334306131383437663163
           3339
 ```
-3. Запустите `playbook`, убедитесь, что для нужных хостов применился новый `fact`.
+3. Запустите `playbook`, убедитесь, что для нужных хостов применился новый `fact`.  
 Решение:  
 ```
 lepis@lepis:~/Downloads/mnt-homeworks-MNT-video/08-ansible-01-base/playbook$ sudo ansible-playbook -i inventory/prod.yml --ask-vault-pass site.yml 
