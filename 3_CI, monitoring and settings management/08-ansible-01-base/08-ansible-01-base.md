@@ -313,7 +313,7 @@ centos7                    : ok=3    changed=0    unreachable=0    failed=0    s
 local_host                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ubuntu                     : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ```
-4. Добавьте новую группу хостов `fedora`, самостоятельно придумайте для неё переменную. В качестве образа можно использовать [этот](https://hub.docker.com/r/pycontribs/fedora).
+4. Добавьте новую группу хостов `fedora`, самостоятельно придумайте для неё переменную. В качестве образа можно использовать [этот](https://hub.docker.com/r/pycontribs/fedora).  
 Решение:  
 ```
 lepis@lepis:~/Downloads/mnt-homeworks-MNT-video/08-ansible-01-base/playbook$ sudo ansible-playbook -i inventory/prod.yml --ask-vault-pass site.yml
@@ -364,7 +364,8 @@ fedora                     : ok=3    changed=0    unreachable=0    failed=0    s
 local_host                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ubuntu                     : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ```
-5. Напишите скрипт на bash: автоматизируйте поднятие необходимых контейнеров, запуск ansible-playbook и остановку контейнеров.
+5. Напишите скрипт на bash: автоматизируйте поднятие необходимых контейнеров, запуск ansible-playbook и остановку контейнеров.  
+Решение:  
 ```
 lepis@lepis:~/Downloads/mnt-homeworks-MNT-video/08-ansible-01-base/playbook$ sudo ./script.sh
 centos7 is up-to-date
