@@ -11,3 +11,9 @@ services:
     image: matthewfeickert/docker-python3-ubuntu
     restart: on-failure
     command: ["sleep","infinity"]
+
+  fedora:
+    container_name: fedora
+    image: pycontribs/fedora
+    restart: on-failure
+    command: ["sleep","infinity"]
