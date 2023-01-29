@@ -135,7 +135,7 @@ vector                     : ok=3    changed=0    unreachable=0    failed=0    s
 ```
 9. Подготовьте README.md файл по своему playbook. В нём должно быть описано: что делает playbook, какие у него есть параметры и теги.
 Решение:
-[README.md]()
+[README.md](https://github.com/Lepisok/devops-netology/blob/main/3_CI%2C%20monitoring%20and%20settings%20management/08-ansible-02-playbook/playbook/README.md)
 10. Готовый playbook выложите в свой репозиторий, поставьте тег `08-ansible-02-playbook` на фиксирующий коммит, в ответ предоставьте ссылку на него.
 Решение:
 [playbook](https://github.com/Lepisok/devops-netology/tree/main/3_CI%2C%20monitoring%20and%20settings%20management/08-ansible-02-playbook/playbook)
