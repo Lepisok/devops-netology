@@ -9,7 +9,7 @@
 
 ## Основная часть
 
-1. Приготовьте свой собственный inventory файл `prod.yml`.
+1. Приготовьте свой собственный inventory файл `prod.yml`.  
 Решение:  
 ```
 ---
@@ -23,7 +23,7 @@ vector:
     vector:
       ansible_host: 192.168.35.132
 ```
-2. Допишите playbook: нужно сделать ещё один play, который устанавливает и настраивает [vector](https://vector.dev).
+2. Допишите playbook: нужно сделать ещё один play, который устанавливает и настраивает [vector](https://vector.dev).  
 Решение:
 ```
 - name: Install Vector
@@ -48,12 +48,14 @@ vector:
 ```
 3. При создании tasks рекомендую использовать модули: `get_url`, `template`, `unarchive`, `file`.
 4. Tasks должны: скачать нужной версии дистрибутив, выполнить распаковку в выбранную директорию, установить vector.
-5. Запустите `ansible-lint site.yml` и исправьте ошибки, если они есть.
+5. Запустите `ansible-lint site.yml` и исправьте ошибки, если они есть.  
+Решение:  
 ```
 root@lepis:/home/lepis/Downloads/mnt-homeworks-MNT-video/08-ansible-02-playbook/playbook# ansible-lint site.yml
 WARNING  Overriding detected file kind 'yaml' with 'playbook' for given positional argument: site.yml
 ```
-6. Попробуйте запустить playbook на этом окружении с флагом `--check`.
+6. Попробуйте запустить playbook на этом окружении с флагом `--check`.  
+Решение:  
 ```
 root@lepis:/home/lepis/Downloads/mnt-homeworks-MNT-video/08-ansible-02-playbook/playbook# ansible-playbook -i inventory/prod.yml site.yml --check
 [WARNING]: Found both group and host with same name: vector
@@ -93,7 +95,7 @@ clickhouse-01              : ok=3    changed=0    unreachable=0    failed=0    s
 vector                     : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0  
 ```
 7. Запустите playbook на `prod.yml` окружении с флагом `--diff`. Убедитесь, что изменения на системе произведены.
-8. Повторно запустите playbook с флагом `--diff` и убедитесь, что playbook идемпотентен.
+8. Повторно запустите playbook с флагом `--diff` и убедитесь, что playbook идемпотентен.  
 Решение:
 ```
 root@lepis:/home/lepis/Downloads/mnt-homeworks-MNT-video/08-ansible-02-playbook/playbook# ansible-playbook -i inventory/prod.yml site.yml --diff
