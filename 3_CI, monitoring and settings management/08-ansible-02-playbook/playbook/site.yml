@@ -1,6 +1,12 @@
 ---
 - name: Install Clickhouse
   hosts: clickhouse
+  handlers:
+    - name: Start clickhouse service
+      become: true
+      ansible.builtin.service:
+        name: clickhouse-server
+        state: restarted
   tasks:
     - block:
         - name: Get clickhouse distrib
@@ -20,11 +26,7 @@
           - clickhouse-common-static-{{ clickhouse_version }}.rpm
           - clickhouse-client-{{ clickhouse_version }}.rpm
           - clickhouse-server-{{ clickhouse_version }}.rpm
-    - name: Start clickhouse service
-      become: true
-      ansible.builtin.service:
-        name: clickhouse-server
-        state: restarted
+      notify: Start clickhouse service
     - name: Create database
       ansible.builtin.command: "clickhouse-client -q 'create database logs;'"
       register: create_db
@@ -50,8 +52,4 @@
       ansible.builtin.yum:
         name:
           - vector-{{ vector_version}}.rpm
-    - name: Start vector service
-      become: true
-      ansible.builtin.service:
-        name: vector
-        state: restarted
+      notify: Start Vector service
