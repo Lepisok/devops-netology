@@ -28,7 +28,7 @@ mkdir -p ${GOBIN}
 
 echo "remove existing generated files"
 # grpc_testing_not_regenerate/*.pb.go is not re-generated,
-# see grpc_testing_not_regenerate/README.md for details.
+# see grpc_testing_not_regenerate/08-ansible-02-playbook.md for details.
 rm -f $(find . -name '*.pb.go' | grep -v 'grpc_testing_not_regenerate')
 
 echo "go install google.golang.org/protobuf/cmd/protoc-gen-go"
@@ -116,7 +116,7 @@ mkdir -p ${WORKDIR}/out/google.golang.org/grpc/internal/proto/grpc_lookup_v1
 mv ${WORKDIR}/out/google.golang.org/grpc/lookup/grpc_lookup_v1/* ${WORKDIR}/out/google.golang.org/grpc/internal/proto/grpc_lookup_v1
 
 # grpc_testing_not_regenerate/*.pb.go are not re-generated,
-# see grpc_testing_not_regenerate/README.md for details.
+# see grpc_testing_not_regenerate/08-ansible-02-playbook.md for details.
 rm ${WORKDIR}/out/google.golang.org/grpc/reflection/grpc_testing_not_regenerate/*.pb.go
 
 # grpc/testing does not have a go_package option.

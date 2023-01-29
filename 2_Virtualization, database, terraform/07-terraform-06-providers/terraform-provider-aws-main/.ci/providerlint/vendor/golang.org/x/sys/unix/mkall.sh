@@ -5,7 +5,7 @@
 
 # This script runs or (given -n) prints suggested commands to generate files for
 # the Architecture/OS specified by the GOARCH and GOOS environment variables.
-# See README.md for more information about how the build system works.
+# See 08-ansible-02-playbook.md for more information about how the build system works.
 
 GOOSARCH="${GOOS}_${GOARCH}"
 
