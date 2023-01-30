@@ -33,18 +33,35 @@ vector:
       ansible.builtin.service:
         name: vector
         state: restarted
-  hosts: vector
   tasks:
     - name: Get vector distrib
       ansible.builtin.get_url:
-        url: "https://packages.timber.io/vector/{{ vector_version}}/vector-x86_64.rpm"
-        dest: "./vector-{{ vector_version}}.rpm"
+        url: "https://packages.timber.io/vector/{{ vector_version }}/vector-0.22.1-1.x86_64.rpm"
+        dest: "./vector-{{ vector_version }}.rpm"
     - name: Install vector packages
       become: true
       ansible.builtin.yum:
         name:
-          - vector-{{ vector_version}}.rpm
+          - vector-{{ vector_version }}.rpm
+    - name: Vector templates
+      become: true
+      ansible.builtin.template:
+        src: vector.yml.j2
+        dest: "/etc/vector/vector.yml"
+        mode: "0644"
+        owner: "{{ ansible_user_id }}"
+        group: "{{ ansible_user_gid }}"
+    - name: Vector systemd unit
+      become: true
+      ansible.builtin.template:
+        src: vector.service.j2
+        dest: /usr/lib/systemd/system/vector.service
+        mode: "0644"
+        owner: "{{ ansible_user_id }}"
+        group: "{{ ansible_user_gid }}"
+        backup: true
       notify: Start Vector service
+
 ```
 3. При создании tasks рекомендую использовать модули: `get_url`, `template`, `unarchive`, `file`.
 4. Tasks должны: скачать нужной версии дистрибутив, выполнить распаковку в выбранную директорию, установить vector.
@@ -57,83 +74,93 @@ WARNING  Overriding detected file kind 'yaml' with 'playbook' for given position
 6. Попробуйте запустить playbook на этом окружении с флагом `--check`.  
 Решение:  
 ```
-root@lepis:/home/lepis/Downloads/mnt-homeworks-MNT-video/08-ansible-02-playbook/playbook# ansible-playbook -i inventory/prod.yml site.yml --check
-[WARNING]: Found both group and host with same name: vector
+PLAY [Install Clickhouse] ***********************************************************************************************
 
-PLAY [Install Clickhouse] *********************************************************************************************************************************************************************************
-
-TASK [Gathering Facts] ************************************************************************************************************************************************************************************
+TASK [Gathering Facts] **************************************************************************************************
 ok: [clickhouse-01]
 
-TASK [Get clickhouse distrib] *****************************************************************************************************************************************************************************
+TASK [Get clickhouse distrib] *******************************************************************************************
 ok: [clickhouse-01] => (item=clickhouse-client)
 ok: [clickhouse-01] => (item=clickhouse-server)
 failed: [clickhouse-01] (item=clickhouse-common-static) => {"ansible_loop_var": "item", "changed": false, "dest": "./clickhouse-common-static-22.3.3.44.rpm", "elapsed": 0, "gid": 0, "group": "root", "item": "clickhouse-common-static", "mode": "0644", "msg": "Request failed", "owner": "root", "response": "HTTP Error 404: Not Found", "size": 246310036, "state": "file", "status_code": 404, "uid": 0, "url": "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-22.3.3.44.noarch.rpm"}
 
-TASK [Get clickhouse distrib] *****************************************************************************************************************************************************************************
+TASK [Get clickhouse distrib] *******************************************************************************************
 ok: [clickhouse-01]
 
-TASK [Install clickhouse packages] ************************************************************************************************************************************************************************
+TASK [Install clickhouse packages] **************************************************************************************
 ok: [clickhouse-01]
 
-TASK [Create database] ************************************************************************************************************************************************************************************
+TASK [Create database] **************************************************************************************************
 skipping: [clickhouse-01]
 
-PLAY [Install Vector] *************************************************************************************************************************************************************************************
+PLAY [Install Vector] ***************************************************************************************************
 
-TASK [Gathering Facts] ************************************************************************************************************************************************************************************
+TASK [Gathering Facts] **************************************************************************************************
 ok: [vector]
 
-TASK [Get vector distrib] *********************************************************************************************************************************************************************************
+TASK [Get vector distrib] ***********************************************************************************************
 ok: [vector]
 
-TASK [Install vector packages] ****************************************************************************************************************************************************************************
+TASK [Install vector packages] ******************************************************************************************
 ok: [vector]
 
-PLAY RECAP ************************************************************************************************************************************************************************************************
+TASK [Vector templates] *************************************************************************************************
+[WARNING]: The value "0" (type int) was converted to "u'0'" (type string). If this does not look like what you expect,
+quote the entire value to ensure it does not change.
+ok: [vector]
+
+TASK [Vector systemd unit] **********************************************************************************************
+ok: [vector]
+
+PLAY RECAP **************************************************************************************************************
 clickhouse-01              : ok=3    changed=0    unreachable=0    failed=0    skipped=1    rescued=1    ignored=0   
-vector                     : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0  
+vector                     : ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0  
 ```
 7. Запустите playbook на `prod.yml` окружении с флагом `--diff`. Убедитесь, что изменения на системе произведены.
 8. Повторно запустите playbook с флагом `--diff` и убедитесь, что playbook идемпотентен.  
 Решение:
 ```
-root@lepis:/home/lepis/Downloads/mnt-homeworks-MNT-video/08-ansible-02-playbook/playbook# ansible-playbook -i inventory/prod.yml site.yml --diff
-[WARNING]: Found both group and host with same name: vector
+PLAY [Install Clickhouse] ***********************************************************************************************
 
-PLAY [Install Clickhouse] *********************************************************************************************************************************************************************************
-
-TASK [Gathering Facts] ************************************************************************************************************************************************************************************
+TASK [Gathering Facts] **************************************************************************************************
 ok: [clickhouse-01]
 
-TASK [Get clickhouse distrib] *****************************************************************************************************************************************************************************
+TASK [Get clickhouse distrib] *******************************************************************************************
 ok: [clickhouse-01] => (item=clickhouse-client)
 ok: [clickhouse-01] => (item=clickhouse-server)
 failed: [clickhouse-01] (item=clickhouse-common-static) => {"ansible_loop_var": "item", "changed": false, "dest": "./clickhouse-common-static-22.3.3.44.rpm", "elapsed": 0, "gid": 0, "group": "root", "item": "clickhouse-common-static", "mode": "0644", "msg": "Request failed", "owner": "root", "response": "HTTP Error 404: Not Found", "size": 246310036, "state": "file", "status_code": 404, "uid": 0, "url": "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-22.3.3.44.noarch.rpm"}
 
-TASK [Get clickhouse distrib] *****************************************************************************************************************************************************************************
+TASK [Get clickhouse distrib] *******************************************************************************************
 ok: [clickhouse-01]
 
-TASK [Install clickhouse packages] ************************************************************************************************************************************************************************
+TASK [Install clickhouse packages] **************************************************************************************
 ok: [clickhouse-01]
 
-TASK [Create database] ************************************************************************************************************************************************************************************
+TASK [Create database] **************************************************************************************************
 ok: [clickhouse-01]
 
-PLAY [Install Vector] *************************************************************************************************************************************************************************************
+PLAY [Install Vector] ***************************************************************************************************
 
-TASK [Gathering Facts] ************************************************************************************************************************************************************************************
+TASK [Gathering Facts] **************************************************************************************************
 ok: [vector]
 
-TASK [Get vector distrib] *********************************************************************************************************************************************************************************
+TASK [Get vector distrib] ***********************************************************************************************
 ok: [vector]
 
-TASK [Install vector packages] ****************************************************************************************************************************************************************************
+TASK [Install vector packages] ******************************************************************************************
 ok: [vector]
 
-PLAY RECAP ************************************************************************************************************************************************************************************************
+TASK [Vector templates] *************************************************************************************************
+[WARNING]: The value "0" (type int) was converted to "u'0'" (type string). If this does not look like what you expect,
+quote the entire value to ensure it does not change.
+ok: [vector]
+
+TASK [Vector systemd unit] **********************************************************************************************
+ok: [vector]
+
+PLAY RECAP **************************************************************************************************************
 clickhouse-01              : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=1    ignored=0   
-vector                     : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+vector                     : ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0                    : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ```
 9. Подготовьте README.md файл по своему playbook. В нём должно быть описано: что делает playbook, какие у него есть параметры и теги.  
 Решение:  
