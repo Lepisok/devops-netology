@@ -41,15 +41,31 @@
       ansible.builtin.service:
         name: vector
         state: restarted
-  hosts: vector
   tasks:
     - name: Get vector distrib
       ansible.builtin.get_url:
-        url: "https://packages.timber.io/vector/{{ vector_version}}/vector-x86_64.rpm"
-        dest: "./vector-{{ vector_version}}.rpm"
+        url: "https://packages.timber.io/vector/{{ vector_version }}/vector-0.22.1-1.x86_64.rpm"
+        dest: "./vector-{{ vector_version }}.rpm"
     - name: Install vector packages
       become: true
       ansible.builtin.yum:
         name:
-          - vector-{{ vector_version}}.rpm
+          - vector-{{ vector_version }}.rpm
+    - name: Vector templates
+      become: true
+      ansible.builtin.template:
+        src: vector.yml.j2
+        dest: "/etc/vector/vector.yml"
+        mode: "0644"
+        owner: "{{ ansible_user_id }}"
+        group: "{{ ansible_user_gid }}"
+    - name: Vector systemd unit
+      become: true
+      ansible.builtin.template:
+        src: vector.service.j2
+        dest: /usr/lib/systemd/system/vector.service
+        mode: "0644"
+        owner: "{{ ansible_user_id }}"
+        group: "{{ ansible_user_gid }}"
+        backup: true
       notify: Start Vector service
