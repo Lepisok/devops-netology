@@ -25,7 +25,7 @@
 | Install clickhouse packages |                                                 Установка скаченных пакетов перезапуск службы clickhouse                                                  |
 | Create database             |                                                                 Cоздание БД в clickhouse                                                                  |
 | ***Vector***                |                                                                                                                                                           |
-| Get vector distrib          |                                                          Скачивание пакетом для установки vector                                                          |
+| Get vector distrib          |                                                          Скачивание пакетов для установки vector                                                          |
 | Install vector packages     |                                                            Установка скаченных пакетов vector                                                             |
 | Vector templates            |                                                       Применение шаблона конфига```vector.yml.j2```                                                       |
 | Vector systemd unit         |                                       Применение шаблона сервиса```vector.service.j2``` и перезапуск службы vector                                        |
