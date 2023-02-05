@@ -80,26 +80,33 @@
         name: nginx
         state: restarted
   tasks:
+    - name: Install git
+      become: true
+      ansible.builtin.yum:
+        name: git
+        state: present
     - name: Install apps for lighthouse
       become: true
       ansible.builtin.yum:
         name:
-         - git
-         - epel-release
-         - nginx
+          - epel-release
+          - nginx
     - name: Git clone lighthouse
       ansible.builtin.git:
         repo: https://github.com/VKCOM/lighthouse.git
         dest: /lighthouse
-        clone: yes
+        version: master
     - name: Copy nginx.conf
       become: true
       ansible.builtin.template:
         src: nginx.conf.j2
         dest: /etc/nginx/nginx.conf
-    - name: Copy nginx.conf
+        mode: "0644"
+    - name: Copy lighthouse.conf.j2
       become: true
       ansible.builtin.template:
         src: lighthouse.conf.j2
         dest: /etc/nginx/conf.d/lighthouse.conf
+        mode: "0644"
       notify: Start nginx service
+
