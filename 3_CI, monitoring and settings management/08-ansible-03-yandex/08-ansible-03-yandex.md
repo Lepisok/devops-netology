@@ -8,7 +8,8 @@
 
 ## Основная часть
 
-1. Допишите playbook: нужно сделать ещё один play, который устанавливает и настраивает lighthouse.
+1. Допишите playbook: нужно сделать ещё один play, который устанавливает и настраивает lighthouse.  
+Решение:  
 ```
 - name: Install lighthouse
   hosts: lighthouse
@@ -48,11 +49,13 @@
 3. Tasks должны: скачать статику lighthouse, установить nginx или любой другой webserver, настроить его конфиг для открытия lighthouse, запустить webserver.
 4. Приготовьте свой собственный inventory файл `prod.yml`.
 5. Запустите `ansible-lint site.yml` и исправьте ошибки, если они есть.  
+Решение:  
 ```
 lepis@lepis:~/Downloads/mnt-homeworks-MNT-video/08-ansible-02-playbook/playbook$ sudo ansible-lint site.yml
 WARNING  Overriding detected file kind 'yaml' with 'playbook' for given positional argument: site.yml
 ```
 6. Попробуйте запустить playbook на этом окружении с флагом `--check`.  
+Решение:  
 ```
 lepis@lepis:~/Downloads/mnt-homeworks-MNT-video/08-ansible-02-playbook/playbook$ sudo ansible-playbook -i inventory/prod.yml site.yml --check
 [WARNING]: Found both group and host with same name: vector
@@ -77,7 +80,8 @@ fatal: [clickhouse-01]: FAILED! => {"changed": false, "msg": "No RPM file matchi
 PLAY RECAP ************************************************************************************************************************************************************************************************
 clickhouse-01              : ok=2    changed=1    unreachable=0    failed=1    skipped=0    rescued=1    ignored=0  
 ```
-7. Запустите playbook на `prod.yml` окружении с флагом `--diff`. Убедитесь, что изменения на системе произведены.
+7. Запустите playbook на `prod.yml` окружении с флагом `--diff`. Убедитесь, что изменения на системе произведены.  
+Решение:  
 ```
 PLAY [Install Clickhouse] *********************************************************************************************************************************************************************************
 
@@ -183,6 +187,7 @@ lighthouse                 : ok=6    changed=2    unreachable=0    failed=0    s
 vector                     : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0 
 ```
 8. Повторно запустите playbook с флагом `--diff` и убедитесь, что playbook идемпотентен.  
+Решение:  
 ```
 PLAY [Install Clickhouse] *********************************************************************************************************************************************************************************
 
@@ -252,10 +257,4 @@ vector                     : ok=5    changed=0    unreachable=0    failed=0    s
 10. Готовый playbook выложите в свой репозиторий, поставьте тег `08-ansible-03-yandex` на фиксирующий коммит, в ответ предоставьте ссылку на него.  
 Решение:  
 [playbook](https://github.com/Lepisok/devops-netology/tree/main/3_CI%2C%20monitoring%20and%20settings%20management/08-ansible-03-yandex/playbook)
----
-
-### Как оформить ДЗ?
-
-Выполненное домашнее задание пришлите ссылкой на .md-файл в вашем репозитории.
-
 ---
