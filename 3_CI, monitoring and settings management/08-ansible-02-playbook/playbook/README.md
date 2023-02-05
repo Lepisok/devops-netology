@@ -1,8 +1,29 @@
-## Описание playbook
-Данный `playbook` предназначен для установки на хосты clickhouse и vector  
-`inventory/prod.yml` - `inventory` хосты для установки clickhouse и vector  
-`group_vars/` - переменные для установки и настройки clickhouse и vector  
-`site.yml` - состоит из двух `play` для установки и настройки clickhouse и vector  
-`templates` - шаблоны  
-`Теги` в данном `playbook` не используются  
-`ansible-playbook -i inventory/prod.yml site.yml` - запуск `playbook`
+# Установка clickhouse и vector
+## Директория  groups_vars
+
+| Файлы           |                         Описание                          |
+|---              |:---------------------------------------------------------:|
+| clickhouse.yml  | Указанная переменная версии для установки clickhouse      |
+| vector.yml      | Указанная переменная версии для установки vector и конфиг |
+
+## Директория inventory
+| Файлы      |                Описание                |
+|------------|:--------------------------------------:|
+| prod.yml   | Указанны хосты для clickhouse и vector |
+## Директория template
+
+| Файлы             |                    Описание                   |
+|-------------------|:---------------------------------------------:|
+| vector.service.j2 |      Шаблон для настройки сервиса vector      |
+| vector.yml.j2     | Шаблон для преобразования конфига в ```YML``` |
+## Описание playbook site.yml
+
+| Taks                        |                                                                         Описание                                                                          |
+|-----------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| Get clickhouse distrib      | Скачивание пакетом для установки clickhouse. Сначала скачиваются пакеты ```noarch.rpm```, если данных пакетов нет, то скачиваются пакеты ```x86_64.rpm``` |
+| Install clickhouse packages |                                                 Установка скаченных пакетов перезапуск службы clickhouse                                                  |
+| Create database             |                                                                 Cоздание БД в clickhouse                                                                  |
+| Get vector distrib          |                                                          Скачивание пакетом для установки vector                                                          |
+| Install vector packages           |                                                            Установка скаченных пакетов vector                                                             |
+| Vector templates         |                                                       Применение шаблона конфига```vector.yml.j2```                                                       |
+| Vector systemd unit |                                       Применение шаблона сервиса```vector.service.j2``` и перезапуск службы vector                                        |
