@@ -1,4 +1,4 @@
-# Установка clickhouse и vector
+# Установка clickhouse, vector и lighthouse
 ## Директория  groups_vars
 
 | Файлы           |                         Описание                          |
