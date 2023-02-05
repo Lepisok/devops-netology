@@ -24,7 +24,7 @@
 | Get clickhouse distrib      | Скачивание пакетом для установки clickhouse. Сначала скачиваются пакеты ```noarch.rpm```, если данных пакетов нет, то скачиваются пакеты ```x86_64.rpm``` |
 | Install clickhouse packages |                                                 Установка скаченных пакетов перезапуск службы clickhouse                                                  |
 | Create database             |                                                                 Cоздание БД в clickhouse                                                                  |
-| ***Vector***                |
+| ***Vector***                |                                                                                                                                                           |
 | Get vector distrib          |                                                          Скачивание пакетом для установки vector                                                          |
 | Install vector packages     |                                                            Установка скаченных пакетов vector                                                             |
 | Vector templates            |                                                       Применение шаблона конфига```vector.yml.j2```                                                       |
