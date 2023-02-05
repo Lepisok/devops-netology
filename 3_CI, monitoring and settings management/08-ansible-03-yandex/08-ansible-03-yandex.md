@@ -249,7 +249,7 @@ vector                     : ok=5    changed=0    unreachable=0    failed=0    s
 9. Подготовьте README.md файл по своему playbook. В нём должно быть описано: что делает playbook, какие у него есть параметры и теги.  
 [README.md](https://github.com/Lepisok/devops-netology/blob/main/3_CI%2C%20monitoring%20and%20settings%20management/08-ansible-03-yandex/playbook/README.md)
 10. Готовый playbook выложите в свой репозиторий, поставьте тег `08-ansible-03-yandex` на фиксирующий коммит, в ответ предоставьте ссылку на него.
-
+[playbook](https://github.com/Lepisok/devops-netology/tree/main/3_CI%2C%20monitoring%20and%20settings%20management/08-ansible-03-yandex/playbook)
 ---
 
 ### Как оформить ДЗ?
