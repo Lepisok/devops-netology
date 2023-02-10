@@ -18,15 +18,19 @@
        version: "1.11.0"
        name: clickhouse 
    ```
+2. При помощи `ansible-galaxy` скачать себе эту роль.  
 Решение:  
 ```
 lepis@lepis:~/mnt/devops-netology/3_CI, monitoring and settings management/08-ansible-04-role/ansible/playbook$ ansible-galaxy install -r requirements.yml -p roles
 - extracting clickhouse to /home/lepis/mnt/devops-netology/3_CI, monitoring and settings management/08-ansible-04-role/ansible/playbook/roles/clickhouse
 - clickhouse (1.11.0) was installed successfully
 ```
-
-2. При помощи `ansible-galaxy` скачать себе эту роль.
-3. Создать новый каталог с ролью при помощи `ansible-galaxy role init vector-role`.
+3. Создать новый каталог с ролью при помощи `ansible-galaxy role init vector-role`.  
+Решение:  
+```
+lepis@lepis:~/mnt/devops-netology/3_CI, monitoring and settings management/08-ansible-04-role/ansible/playbook$ ansible-galaxy role init vector-role
+- Role vector-role was created successfully
+```
 4. На основе tasks из старого playbook заполните новую role. Разнесите переменные между `vars` и `default`. 
 5. Перенести нужные шаблоны конфигов в `templates`.
 6. Описать в `README.md` обе роли и их параметры.
