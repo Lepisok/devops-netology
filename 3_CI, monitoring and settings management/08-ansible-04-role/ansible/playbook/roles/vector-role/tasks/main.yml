@@ -1,2 +1,20 @@
 ---
 # tasks file for vector-role
+- name: Vector templates
+  become: true
+  ansible.builtin.template:
+    src: vector.yml.j2
+    dest: "/etc/vector/vector.yml"
+    mode: "0644"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_gid }}"
+- name: Vector systemd unit
+  become: true
+  ansible.builtin.template:
+    src: vector.service.j2
+    dest: "{{systemd_vector}}"
+    mode: "0644"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_gid }}"
+    backup: true
+  notify: Start Vector service

@@ -1,2 +1,21 @@
 ---
 # defaults file for vector-role
+vector_version: "0.22.1"
+vector_config:
+  sources:
+    logs_file:
+      type: file
+      read_from: beginning
+      ignore_older_secs: 600
+      include:
+        - /var/log/*.log
+  sinks:
+    clickhouse:
+      type: clickhouse
+      inputs:
+        - logs_file
+      endpoint: http://192.168.35.131:8123
+      database: logs
+      table: logs
+      skip_unknown_fields: true
+      compression: gzip
