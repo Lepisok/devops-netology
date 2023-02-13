@@ -33,15 +33,9 @@ lepis@lepis:~/mnt/devops-netology/3_CI, monitoring and settings management/08-an
 8. Выложите все roles в репозитории. Проставьте тэги, используя семантическую нумерацию Добавьте roles в `requirements.yml` в playbook.
 9. Переработайте playbook на использование roles. Не забудьте про зависимости lighthouse и возможности совмещения `roles` с `tasks`.
 10. Выложите playbook в репозиторий.
-11. В ответ приведите ссылки на оба репозитория с roles и одну ссылку на репозиторий с playbook.
+11. В ответ приведите ссылки на оба репозитория с roles и одну ссылку на репозиторий с playbook.  
 Решение:  
-[vector](https://github.com/Lepisok/vector)
-[lighthouse](https://github.com/Lepisok/lighthouse)
-[playbook](https://github.com/Lepisok/devops-netology/tree/main/3_CI%2C%20monitoring%20and%20settings%20management/08-ansible-04-role/ansible/playbook)
----
-
-### Как оформить ДЗ?
-
-Выполненное домашнее задание пришлите ссылкой на .md-файл в вашем репозитории.
-
+[vector](https://github.com/Lepisok/vector)  
+[lighthouse](https://github.com/Lepisok/lighthouse)  
+[playbook](https://github.com/Lepisok/devops-netology/tree/main/3_CI%2C%20monitoring%20and%20settings%20management/08-ansible-04-role/ansible/playbook)  
 ---
