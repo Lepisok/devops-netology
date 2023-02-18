@@ -1,4 +1,6 @@
 galaxy_info:
+  role_name: vector
+  namespace: test
   author: Aleksandr
   description: Install vector
 
