@@ -31,7 +31,10 @@
 ## Решение:  
 ### Molecule  
 ### Ход выполнение 
-```
+<details>
+      <summary>Ход выполнение</summary>
+      
+```bash
 lepis@lepis:~/Homework/netology-homework/My_homework/devops-netology/3_CI, monitoring and settings management/vector-role/vector/vector-role$ molecule test  
 INFO     default scenario test matrix: dependency, lint, cleanup, destroy, syntax, create, prepare, converge, idempotence, side_effect, verify, cleanup, destroy  
 INFO     Performing prerun...  
@@ -394,6 +397,8 @@ skipping: [localhost]
 PLAY RECAP *********************************************************************
 localhost                  : ok=3    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
 ```
+</details>
+
 ### Репозиторий vector
 [vector](https://github.com/Lepisok/vector/tree/v0.2)  
 
@@ -414,7 +419,7 @@ ERROR: InvocationError for command /opt/vector-role/.tox/py37-ansible210/bin/mol
 ```
 ## Финальный запуск tox
 <details>
-      <summary>вывод `tox`</summary>
+      <summary>Финальный запуск tox</summary>
       
 ```bash
 [root@19fa213cc765 vector-role]# tox
