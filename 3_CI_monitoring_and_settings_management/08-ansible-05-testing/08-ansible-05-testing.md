@@ -1061,3 +1061,5 @@ ERROR:   py39-ansible30: commands failed
 
 ### Репозиторий vector
 [vector](https://github.com/Lepisok/vector/tree/v0.3/vector-role)  
+### Playbook
+[playbook](https://github.com/Lepisok/devops-netology/tree/main/3_CI_monitoring_and_settings_management/08-ansible-05-testing/playbook)
