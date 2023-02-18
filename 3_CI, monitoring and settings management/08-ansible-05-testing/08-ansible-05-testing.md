@@ -33,13 +33,14 @@
 ### Ход выполнение 
 <details>
 <summary>Ход выполнение</summary>
-lepis@lepis:~/Homework/netology-homework/My_homework/devops-netology/3_CI, monitoring and settings management/vector-role/vector/vector-role$ molecule test
-INFO     default scenario test matrix: dependency, lint, cleanup, destroy, syntax, create, prepare, converge, idempotence, side_effect, verify, cleanup, destroy
-INFO     Performing prerun...
-INFO     Set ANSIBLE_LIBRARY=/home/lepis/.cache/ansible-compat/f5bcd7/modules:/home/lepis/.ansible/plugins/modules:/usr/share/ansible/plugins/modules
-INFO     Set ANSIBLE_COLLECTIONS_PATH=/home/lepis/.cache/ansible-compat/f5bcd7/collections:/home/lepis/.ansible/collections:/usr/share/ansible/collections
-INFO     Set ANSIBLE_ROLES_PATH=/home/lepis/.cache/ansible-compat/f5bcd7/roles:/home/lepis/.ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles
-INFO     Running default > dependency
+```
+lepis@lepis:~/Homework/netology-homework/My_homework/devops-netology/3_CI, monitoring and settings management/vector-role/vector/vector-role$ molecule test  
+INFO     default scenario test matrix: dependency, lint, cleanup, destroy, syntax, create, prepare, converge, idempotence, side_effect, verify, cleanup, destroy  
+INFO     Performing prerun...  
+INFO     Set ANSIBLE_LIBRARY=/home/lepis/.cache/ansible-compat/f5bcd7/modules:/home/lepis/.ansible/plugins/modules:/usr/share/ansible/plugins/modules  
+INFO     Set ANSIBLE_COLLECTIONS_PATH=/home/lepis/.cache/ansible-compat/f5bcd7/collections:/home/lepis/.ansible/collections:/usr/share/ansible/collections  
+INFO     Set ANSIBLE_ROLES_PATH=/home/lepis/.cache/ansible-compat/f5bcd7/roles:/home/lepis/.ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles  
+INFO     Running default > dependency  
 WARNING  Skipping, missing the requirements file.
 WARNING  Skipping, missing the requirements file.
 INFO     Running default > lint
@@ -393,8 +394,10 @@ TASK [Delete docker networks(s)] ***********************************************
 skipping: [localhost]
 
 PLAY RECAP *********************************************************************
-localhost                  : ok=3    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0  
+localhost                  : ok=3    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+```
 </details>
+
 ## Необязательная часть
 
 1. Проделайте схожие манипуляции для создания роли lighthouse.
