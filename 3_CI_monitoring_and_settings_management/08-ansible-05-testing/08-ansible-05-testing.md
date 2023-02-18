@@ -400,7 +400,7 @@ localhost                  : ok=3    changed=2    unreachable=0    failed=0    s
 </details>
 
 ### Репозиторий vector
-[vector](https://github.com/Lepisok/vector/tree/v0.2)  
+[vector](https://github.com/Lepisok/vector/tree/v0.2/vector-role)  
 
 ## Решение:  
 ### TOX  
@@ -1060,4 +1060,4 @@ ERROR:   py39-ansible30: commands failed
 </details>
 
 ### Репозиторий vector
-[vector](https://github.com/Lepisok/vector/tree/v0.2)  
+[vector](https://github.com/Lepisok/vector/tree/v0.3/vector-role)  
