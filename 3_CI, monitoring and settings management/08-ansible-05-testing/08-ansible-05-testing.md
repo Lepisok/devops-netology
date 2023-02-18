@@ -31,8 +31,6 @@
 Решение:  
 ### Molecule  
 ### Ход выполнение 
-<details>
-<summary>Ход выполнение</summary>
 ```
 lepis@lepis:~/Homework/netology-homework/My_homework/devops-netology/3_CI, monitoring and settings management/vector-role/vector/vector-role$ molecule test  
 INFO     default scenario test matrix: dependency, lint, cleanup, destroy, syntax, create, prepare, converge, idempotence, side_effect, verify, cleanup, destroy  
@@ -396,7 +394,6 @@ skipping: [localhost]
 PLAY RECAP *********************************************************************
 localhost                  : ok=3    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
 ```
-</details>
 
 ## Необязательная часть
 
