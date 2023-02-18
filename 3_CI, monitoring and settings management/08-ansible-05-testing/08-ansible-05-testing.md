@@ -31,7 +31,8 @@
 Решение:  
 ### Molecule  
 ### Ход выполнение 
->>> lepis@lepis:~/Homework/netology-homework/My_homework/devops-netology/3_CI, monitoring and settings management/vector-role/vector/vector-role$ molecule test
+<summary> 
+lepis@lepis:~/Homework/netology-homework/My_homework/devops-netology/3_CI, monitoring and settings management/vector-role/vector/vector-role$ molecule test
 INFO     default scenario test matrix: dependency, lint, cleanup, destroy, syntax, create, prepare, converge, idempotence, side_effect, verify, cleanup, destroy
 INFO     Performing prerun...
 INFO     Set ANSIBLE_LIBRARY=/home/lepis/.cache/ansible-compat/f5bcd7/modules:/home/lepis/.ansible/plugins/modules:/usr/share/ansible/plugins/modules
@@ -391,8 +392,8 @@ TASK [Delete docker networks(s)] ***********************************************
 skipping: [localhost]
 
 PLAY RECAP *********************************************************************
-localhost                  : ok=3    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
-<<<
+localhost                  : ok=3    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0  
+<summary>
 ## Необязательная часть
 
 1. Проделайте схожие манипуляции для создания роли lighthouse.
