@@ -157,7 +157,7 @@ if __name__ == '__main__':
 ```
 Или возьмите данное наполнение из [статьи](https://docs.ansible.com/ansible/latest/dev_guide/developing_modules_general.html#creating-a-module).
 
-3. Заполните файл в соответствии с требованиями ansible так, чтобы он выполнял основную задачу: module должен создавать текстовый файл на удалённом хосте по пути, определённом в параметре `path`, с содержимым, определённым в параметре `content`.
+3. Заполните файл в соответствии с требованиями ansible так, чтобы он выполнял основную задачу: module должен создавать текстовый файл на удалённом хосте по пути, определённом в параметре `path`, с содержимым, определённым в параметре `content`.  
 Решение:  
 ```python
 #!/usr/bin/python
@@ -271,7 +271,7 @@ def main():
 if __name__ == '__main__':
     main()
 ```
-4. Проверьте module на исполняемость локально.
+4. Проверьте module на исполняемость локально.  
 Решение:  
 ```
 (venv) lepis@lepis:~/Homework/my_own_collection/ansible$ python -m ansible.modules.my_own_module test.json
@@ -308,7 +308,7 @@ changed: [localhost]
 PLAY RECAP *****************************************************************************************************************************************************************************
 localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ```
-6. Проверьте через playbook на идемпотентность.
+6. Проверьте через playbook на идемпотентность.  
 Решение:  
 ```
 (venv) lepis@lepis:~/Homework/my_own_collection/ansible$ ansible-playbook single_task_test.yaml 
@@ -329,7 +329,7 @@ PLAY RECAP *********************************************************************
 localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ```
 7. Выйдите из виртуального окружения.
-8. Инициализируйте новую collection: `ansible-galaxy collection init my_own_namespace.yandex_cloud_elk`
+8. Инициализируйте новую collection: `ansible-galaxy collection init my_own_namespace.yandex_cloud_elk`  
 Решение:  
 ```
 lepis@lepis:~/Homework/my_own_collection$ ansible-galaxy collection init my_own_namespace.yandex_cloud_elk
@@ -341,7 +341,7 @@ lepis@lepis:~/Homework/my_own_collection$ ansible-galaxy collection init my_own_
 12. Заполните всю документацию по collection, выложите в свой репозиторий, поставьте тег `1.0.0` на этот коммит.  
 Решение:  
 [my_own_collection](https://github.com/Lepisok/my_own_collection/tree/v1.0.0)
-13. Создайте .tar.gz этой collection: `ansible-galaxy collection build` в корневой директории collection.
+13. Создайте .tar.gz этой collection: `ansible-galaxy collection build` в корневой директории collection.  
 Решение:  
 ```
 lepis@lepis:~/Homework/my_own_collection/my_own_namespace/yandex_cloud_elk$ ansible-galaxy collection build
@@ -358,7 +358,8 @@ Starting collection install process
 Installing 'apodkopaev.yandex_cloud_elk:1.0.0' to '/home/lepis/.ansible/collections/ansible_collections/apodkopaev/yandex_cloud_elk'
 apodkopaev.yandex_cloud_elk:1.0.0 was installed successfully
 ```
-16. Запустите playbook, убедитесь, что он работает.
+16. Запустите playbook, убедитесь, что он работает.  
+Решение:  
 ```
 lepis@lepis:~/Desktop/test$ ansible-playbook test.yaml 
 [WARNING]: No inventory was parsed, only implicit localhost is available
@@ -377,7 +378,7 @@ localhost                  : ok=2    changed=1    unreachable=0    failed=0    s
 lepis@lepis:~/Desktop/test$ cat /tmp/single_task_test 
 FooBar
 ```
-17. В ответ необходимо прислать ссылки на collection и tar.gz архив, а также скриншоты выполнения пунктов 4, 6, 15 и 16.
+17. В ответ необходимо прислать ссылки на collection и tar.gz архив, а также скриншоты выполнения пунктов 4, 6, 15 и 16.  
 Решение:  
 [tar.gz](https://github.com/Lepisok/my_own_collection/blob/master/my_own_namespace/yandex_cloud_elk/apodkopaev-yandex_cloud_elk-1.0.0.tar.gz)
 [my_own_collection](https://github.com/Lepisok/my_own_collection/tree/master/my_own_namespace/yandex_cloud_elk)
