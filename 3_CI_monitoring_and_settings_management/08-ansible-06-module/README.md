@@ -338,26 +338,46 @@ lepis@lepis:~/Homework/my_own_collection$ ansible-galaxy collection init my_own_
 9. В данную collection перенесите свой module в соответствующую директорию.
 10. Single task playbook преобразуйте в single task role и перенесите в collection. У role должны быть default всех параметров module
 11. Создайте playbook для использования этой role.
-12. Заполните всю документацию по collection, выложите в свой репозиторий, поставьте тег `1.0.0` на этот коммит.
+12. Заполните всю документацию по collection, выложите в свой репозиторий, поставьте тег `1.0.0` на этот коммит.  
+Решение:  
+[my_own_collection](https://github.com/Lepisok/my_own_collection/tree/v1.0.0)
 13. Создайте .tar.gz этой collection: `ansible-galaxy collection build` в корневой директории collection.
+Решение:  
+```
+lepis@lepis:~/Homework/my_own_collection/my_own_namespace/yandex_cloud_elk$ ansible-galaxy collection build
+Created collection for apodkopaev.yandex_cloud_elk at /home/lepis/Homework/my_own_collection/my_own_namespace/yandex_cloud_elk/apodkopaev-yandex_cloud_elk-1.0.0.tar.gz
+```
 14. Создайте ещё одну директорию любого наименования, перенесите туда single task playbook и архив c collection.
-15. Установите collection из локального архива: `ansible-galaxy collection install <archivename>.tar.gz`
+15. Установите collection из локального архива: `ansible-galaxy collection install <archivename>.tar.gz`  
+Решение:  
+```
+lepis@lepis:~/Desktop/test$ ansible-galaxy collection install apodkopaev-yandex_cloud_elk-1.0.0.tar.gz
+Starting galaxy collection install process
+Process install dependency map
+Starting collection install process
+Installing 'apodkopaev.yandex_cloud_elk:1.0.0' to '/home/lepis/.ansible/collections/ansible_collections/apodkopaev/yandex_cloud_elk'
+apodkopaev.yandex_cloud_elk:1.0.0 was installed successfully
+```
 16. Запустите playbook, убедитесь, что он работает.
+```
+lepis@lepis:~/Desktop/test$ ansible-playbook test.yaml 
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+PLAY [Test playbook for Collection] ****************************************************************************************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************************************************************************************************
+ok: [localhost]
+
+TASK [apodkopaev.yandex_cloud_elk.single_task_role : Create File] **********************************************************************************************************************
+changed: [localhost]
+
+PLAY RECAP *****************************************************************************************************************************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+lepis@lepis:~/Desktop/test$ cat /tmp/single_task_test 
+FooBar
+```
 17. В ответ необходимо прислать ссылки на collection и tar.gz архив, а также скриншоты выполнения пунктов 4, 6, 15 и 16.
-
-## Необязательная часть
-
-1. Реализуйте свой собственный модуль для создания хостов в Yandex Cloud.
-2. Модуль может (и должен) иметь зависимость от `yc`, основной функционал: создание ВМ с нужным сайзингом на основе нужной ОС. Дополнительные модули по созданию кластеров Clickhouse, MySQL и прочего реализовывать не надо, достаточно простейшего создания ВМ.
-3. Модуль может формировать динамическое inventory, но данная часть не является обязательной, достаточно, чтобы он делал хосты с указанной спецификацией в YAML.
-4. Протестируйте модуль на идемпотентность, исполнимость. При успехе - добавьте данный модуль в свою коллекцию.
-5. Измените playbook так, чтобы он умел создавать инфраструктуру под inventory, а после устанавливал весь ваш стек Observability на нужные хосты и настраивал его.
-6. В итоге, ваша коллекция обязательно должна содержать: clickhouse-role(если есть своя), lighthouse-role, vector-role, два модуля: my_own_module и модуль управления Yandex Cloud хостами и playbook, который демонстрирует создание Observability стека.
-
----
-
-### Как оформить ДЗ?
-
-Выполненное домашнее задание пришлите ссылкой на .md-файл в вашем репозитории.
-
----
+Решение:  
+[tar.gz](https://github.com/Lepisok/my_own_collection/blob/master/my_own_namespace/yandex_cloud_elk/apodkopaev-yandex_cloud_elk-1.0.0.tar.gz)
+[my_own_collection](https://github.com/Lepisok/my_own_collection/tree/master/my_own_namespace/yandex_cloud_elk)
