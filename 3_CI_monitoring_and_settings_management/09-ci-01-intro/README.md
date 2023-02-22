@@ -28,7 +28,7 @@
 Если всё отработало в рамках ожидания - выгрузить схемы workflow для импорта в XML. Файлы с workflow приложить к решению задания.  
 
 Решение:  
-1) [bug](https://github.com/Lepisok/devops-netology/blob/main/3_CI_monitoring_and_settings_management/09-ci-01-intro/AN-19.xml  
+1) [bug](https://github.com/Lepisok/devops-netology/blob/main/3_CI_monitoring_and_settings_management/09-ci-01-intro/AN-19.xml)  
 2) [other_tasks](https://github.com/Lepisok/devops-netology/blob/main/3_CI_monitoring_and_settings_management/09-ci-01-intro/AN-16.xml)
 
 ---
