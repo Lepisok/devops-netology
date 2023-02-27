@@ -1,17 +1,17 @@
 resource "yandex_compute_instance" "centos-count" {
   count = local.instance_count[terraform.workspace]
-  name = "${terraform.workspace}-count-${count.index}"
+  name  = "${terraform.workspace}-count-${count.index}"
 
-resources {
+  resources {
     cores  = local.cores[terraform.workspace]
     memory = local.memory[terraform.workspace]
   }
 
   boot_disk {
     initialize_params {
-      image_id = "${var.image_id}"    #Centos7
-      type        = "network-nvme"
-      size        = "20"
+      image_id = var.image_id #Centos7
+      type     = "network-nvme"
+      size     = "20"
     }
   }
 
@@ -36,5 +36,9 @@ locals {
   memory = {
     "prod"  = 4
     "stage" = 1
+  }
+
+  metadata = {
+    user-data = file("meta.txt")
   }
 }
