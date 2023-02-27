@@ -15,6 +15,11 @@ resource "yandex_compute_instance" "centos-count" {
     }
   }
 
+  metadata = {
+    user-data   = "${file("./meta.txt")}"
+    descriptiom = "Create user"
+  }
+
   network_interface {
     subnet_id = yandex_vpc_subnet.subnet-1.id
     nat       = true
@@ -36,9 +41,5 @@ locals {
   memory = {
     "prod"  = 4
     "stage" = 1
-  }
-
-  metadata = {
-    user-data = file("meta.txt")
   }
 }
