@@ -33,7 +33,7 @@ INFO: Linux 3.10.0-1160.80.1.el7.x86_64 amd64
 7. Исправляем ошибки, которые он выявил(включая warnings)
 8. Запускаем анализатор повторно - проверяем, что QG пройдены успешно
 9. Делаем скриншот успешного прохождения анализа, прикладываем к решению ДЗ  
-/home/lepis/Homework/netology-homework/My_homework/devops-netology/3_CI_monitoring_and_settings_management/09-ci-03-cicd/img/img.png
+![img.png](img/img.png)
 ## Знакомство с Nexus
 
 ### Основная часть
