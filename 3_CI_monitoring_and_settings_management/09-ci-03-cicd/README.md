@@ -76,9 +76,3 @@ OS name: "linux", version: "3.10.0-1160.80.1.el7.x86_64", arch: "amd64", family:
 Решение:  [pom.xml](https://github.com/Lepisok/devops-netology/blob/main/3_CI_monitoring_and_settings_management/09-ci-03-cicd/mvn/pom.xml)
 
 ---
-
-### Как оформить ДЗ?
-
-Выполненное домашнее задание пришлите ссылкой на .md-файл в вашем репозитории.
-
----

@@ -1,5 +1,8 @@
+#cloud-config
 users:
   - name: lepis
     groups: sudo
     shell: /bin/bash
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCuBUYURAfeecFB4QTkmGst0pDmx2JGIaCZbAKtsogusMSA6hfo3OiVI4MbQhanNqnYpTz3yi5z7bdhDXdOx6I/fkY/MNya/6ndL9umwAI8Mdp5B2C0YDTUgU5sIiM0deklkD7y3RAQvcXR55g3CLP86zyUCRsZEAroPjot6DF/V7xIEzXHu3h3LWFApS/p16W22d5+cLDNHKCeCSf0TnnbAIZL8lDBMY/MSnxzVWkORFpd+LzySJXSyCVU/gpLdU3xQAEsdd/PntIjF7QvS9wj50B6S8qTgQJNiG5tigm72KHSwwDbn2pfpxIcVndK/fyl3Rcg9P+BhGry/12hfSFsqQ/8xHPsnU8U1wNAy6OD/tBfH9UtW8sfG6oxhnN1IxpjCvChdZERlciehwKTOCZzp7yXdrviJ4BuFoWbO3inIrdHLbiThryM8XKnnia/HGlcxTzE8l0k3ynX459NgSXneBCTfIVcqczQXN2x2prEOngJwviRNpLHUhVRVdV38A0=
