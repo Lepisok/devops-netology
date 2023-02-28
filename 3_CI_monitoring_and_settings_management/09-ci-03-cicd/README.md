@@ -55,7 +55,16 @@ INFO: Linux 3.10.0-1160.80.1.el7.x86_64 amd64
 1. Скачиваем дистрибутив с [maven](https://maven.apache.org/download.cgi)
 2. Разархивируем, делаем так, чтобы binary был доступен через вызов в shell (или меняем переменную PATH или любой другой удобный вам способ)
 3. Удаляем из `apache-maven-<version>/conf/settings.xml` упоминание о правиле, отвергающем http соединение( раздел mirrors->id: my-repository-http-unblocker)
-4. Проверяем `mvn --version`
+4. Проверяем `mvn --version`  
+Решение:  
+```
+[lepis@fhmg9ulppv81gt8oddul ~]$ mvn --version
+Apache Maven 3.9.0 (9b58d2bad23a66be161c4664ef21ce219c2c8584)
+Maven home: /home/lepis/apache-maven-3.9.0
+Java version: 11, vendor: Oracle Corporation, runtime: /opt/jdk/openjdk-11+28_linux
+Default locale: en_US, platform encoding: UTF-8
+OS name: "linux", version: "3.10.0-1160.80.1.el7.x86_64", arch: "amd64", family: "unix"
+```
 5. Забираем директорию [mvn](./mvn) с pom
 
 ### Основная часть
