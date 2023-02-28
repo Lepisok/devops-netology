@@ -18,13 +18,22 @@
 1. Создаём новый проект, название произвольное
 2. Скачиваем пакет sonar-scanner, который нам предлагает скачать сам sonarqube
 3. Делаем так, чтобы binary был доступен через вызов в shell (или меняем переменную PATH или любой другой удобный вам способ)
-4. Проверяем `sonar-scanner --version`
+4. Проверяем `sonar-scanner --version`  
+Решение:  
+```
+[lepis@fhmg9ulppv81gt8oddul sonar-scanner-4.8.0.2856-linux]$ sonar-scanner --version
+INFO: Scanner configuration file: /home/lepis/sonar-scanner-4.8.0.2856-linux/conf/sonar-scanner.properties
+INFO: Project root configuration file: NONE
+INFO: SonarScanner 4.8.0.2856
+INFO: Java 11.0.17 Eclipse Adoptium (64-bit)
+INFO: Linux 3.10.0-1160.80.1.el7.x86_64 amd64
+```
 5. Запускаем анализатор против кода из директории [example](./example) с дополнительным ключом `-Dsonar.coverage.exclusions=fail.py`
 6. Смотрим результат в интерфейсе
 7. Исправляем ошибки, которые он выявил(включая warnings)
 8. Запускаем анализатор повторно - проверяем, что QG пройдены успешно
 9. Делаем скриншот успешного прохождения анализа, прикладываем к решению ДЗ
-
+![img_1.png](/home/lepis/Homework/netology-homework/My_homework/devops-netology/3_CI_monitoring_and_settings_management/09-ci-03-cicd/img/Screenshot 2023-02-28 at 20-36-35 netology.png)
 ## Знакомство с Nexus
 
 ### Основная часть
