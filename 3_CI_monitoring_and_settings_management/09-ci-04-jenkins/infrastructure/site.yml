@@ -18,7 +18,6 @@
       package:
         name: "{{ java_packages }}"
         state: present
-
 - name: Get Jenkins master installed
   hosts: jenkins_masters
   tasks:
@@ -146,4 +145,11 @@
       until: install_agent is succeeded
       retries: 10
       timeout: 10
-
+    - name: Install molecule
+      become: true
+      become_user: "{{ jenkins_user_name }}"
+      pip:
+        executable: pip3
+        name:
+          - molecule==3.5.2
+          - molecule-docker

@@ -1,0 +1,20 @@
+---
+# tasks file for lighthouse-role
+- name: Git clone lighthouse
+  ansible.builtin.git:
+    repo: "{{ repository }}"
+    dest: "{{ directory }}"
+    version: master
+- name: Copy nginx.conf
+  become: true
+  ansible.builtin.template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+    mode: "0644"
+- name: Copy lighthouse.conf.j2
+  become: true
+  ansible.builtin.template:
+    src: lighthouse.conf.j2
+    dest: /etc/nginx/conf.d/lighthouse.conf
+    mode: "0644"
+  notify: Start nginx service
