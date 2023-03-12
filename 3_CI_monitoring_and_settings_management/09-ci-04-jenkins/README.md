@@ -603,6 +603,7 @@ Finished: SUCCESS
 </details>  
 
 3. Перенести Declarative Pipeline в репозиторий в файл `Jenkinsfile`.  
+[Jenkinsfile](https://github.com/Lepisok/devops-netology/blob/main/3_CI_monitoring_and_settings_management/09-ci-04-jenkins/pipeline/Jenkinsfile)  
 4. Создать Multibranch Pipeline на запуск `Jenkinsfile` из репозитория.  
 5. Создать Scripted Pipeline, наполнить его скриптом из [pipeline](./pipeline).  
 6. Внести необходимые изменения, чтобы Pipeline запускал `ansible-playbook` без флагов `--check --diff`, если не установлен параметр при запуске джобы (prod_run = True), по умолчанию параметр имеет значение False и запускает прогон с флагами `--check --diff`.  
