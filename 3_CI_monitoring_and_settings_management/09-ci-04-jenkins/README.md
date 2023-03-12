@@ -959,8 +959,11 @@ Finished: SUCCESS
 6. Внести необходимые изменения, чтобы Pipeline запускал `ansible-playbook` без флагов `--check --diff`, если не установлен параметр при запуске джобы (prod_run = True), по умолчанию параметр имеет значение False и запускает прогон с флагами `--check --diff`.  
 7. Проверить работоспособность, исправить ошибки, исправленный Pipeline вложить в репозиторий в файл `ScriptedJenkinsfile`.  
 8. Отправить ссылку на репозиторий с ролью и Declarative Pipeline и Scripted Pipeline.  
-Решение:  
+Решение: 
 
+[Role](https://github.com/Lepisok/devops-netology/tree/main/3_CI_monitoring_and_settings_management/09-ci-04-jenkins/mnt-homeworks-ansible/roles/vector-role) 
+[Declarative Pipeline](https://github.com/Lepisok/devops-netology/blob/main/3_CI_monitoring_and_settings_management/09-ci-04-jenkins/Jenkinsfile)  
+[Scripted Pipeline](https://github.com/Lepisok/devops-netology/blob/main/3_CI_monitoring_and_settings_management/09-ci-04-jenkins/ScriptedJenkinsfile)
 ## Необязательная часть
 
 1. Создать скрипт на groovy, который будет собирать все Job, которые завершились хотя бы раз неуспешно. Добавить скрипт в репозиторий с решением с названием `AllJobFailure.groovy`.
