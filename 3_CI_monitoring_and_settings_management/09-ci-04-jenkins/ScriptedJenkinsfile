@@ -1,0 +1,21 @@
+node("linux"){
+    stage("Git checkout"){
+        git branch: 'main', credentialsId: 'e7574c24-0a42-4dd7-a011-293bea349028', url: 'https://github.com/Lepisok/devops-netology'
+    }
+    stage("Sample define secret_check"){
+        secret_check=true
+    }
+    stage("Prod run"){
+        prod_run=false
+    }
+    stage("Run playbook"){
+        sh 'cd 3_CI_monitoring_and_settings_management/08-ansible-01-base/playbook/'
+        if (prod_run){
+            sh 'ansible-playbook site.yml -i inventory/prod.yml'
+        }
+        else{
+            echo 'ansible-playbook site.yml -i inventory/prod.yml --check --diff'
+        }
+        
+    }
+}
