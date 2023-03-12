@@ -12,7 +12,7 @@
 1. Сделать Freestyle Job, который будет запускать `molecule test` из любого вашего репозитория с ролью.  
 Решение:  
 <details>
-      <summary>Финальный запуск tox</summary>
+      <summary>molecule test</summary>
       
 ```bash
 Started by user admin
