@@ -961,7 +961,7 @@ Finished: SUCCESS
 8. Отправить ссылку на репозиторий с ролью и Declarative Pipeline и Scripted Pipeline.  
 Решение: 
 
-[Role](https://github.com/Lepisok/devops-netology/tree/main/3_CI_monitoring_and_settings_management/09-ci-04-jenkins/mnt-homeworks-ansible/roles/vector-role) 
+[Role](https://github.com/Lepisok/devops-netology/tree/main/3_CI_monitoring_and_settings_management/09-ci-04-jenkins/mnt-homeworks-ansible/roles/vector-role)  
 [Declarative Pipeline](https://github.com/Lepisok/devops-netology/blob/main/3_CI_monitoring_and_settings_management/09-ci-04-jenkins/Jenkinsfile)  
 [Scripted Pipeline](https://github.com/Lepisok/devops-netology/blob/main/3_CI_monitoring_and_settings_management/09-ci-04-jenkins/ScriptedJenkinsfile)
 ## Необязательная часть
