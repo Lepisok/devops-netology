@@ -600,13 +600,14 @@ INFO     Pruning extra files from scenario ephemeral directory
 [Pipeline] End of Pipeline
 Finished: SUCCESS
 ```
-</details>
-3. Перенести Declarative Pipeline в репозиторий в файл `Jenkinsfile`.
-4. Создать Multibranch Pipeline на запуск `Jenkinsfile` из репозитория.
-5. Создать Scripted Pipeline, наполнить его скриптом из [pipeline](./pipeline).
-6. Внести необходимые изменения, чтобы Pipeline запускал `ansible-playbook` без флагов `--check --diff`, если не установлен параметр при запуске джобы (prod_run = True), по умолчанию параметр имеет значение False и запускает прогон с флагами `--check --diff`.
-7. Проверить работоспособность, исправить ошибки, исправленный Pipeline вложить в репозиторий в файл `ScriptedJenkinsfile`.
-8. Отправить ссылку на репозиторий с ролью и Declarative Pipeline и Scripted Pipeline.
+</details>  
+
+3. Перенести Declarative Pipeline в репозиторий в файл `Jenkinsfile`.  
+4. Создать Multibranch Pipeline на запуск `Jenkinsfile` из репозитория.  
+5. Создать Scripted Pipeline, наполнить его скриптом из [pipeline](./pipeline).  
+6. Внести необходимые изменения, чтобы Pipeline запускал `ansible-playbook` без флагов `--check --diff`, если не установлен параметр при запуске джобы (prod_run = True), по умолчанию параметр имеет значение False и запускает прогон с флагами `--check --diff`.  
+7. Проверить работоспособность, исправить ошибки, исправленный Pipeline вложить в репозиторий в файл `ScriptedJenkinsfile`.  
+8. Отправить ссылку на репозиторий с ролью и Declarative Pipeline и Scripted Pipeline.  
 
 ## Необязательная часть
 
