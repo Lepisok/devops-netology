@@ -19,7 +19,6 @@
 5. Скрипт из репозитория размещён в /python_api
 6. Точка вызова: запуск скрипта
 7. Если сборка происходит на ветке `master`: должен подняться pod kubernetes на основе образа `python-api`, иначе этот шаг нужно пропустить  
-Решение:  [.gitlab-ci.yml](https://github.com/Lepisok/devops-netology/blob/main/3_CI_monitoring_and_settings_management/09-ci-06-gitlab/repository/.gitlab-ci.yml)
 
 ### Product Owner
 
@@ -44,17 +43,8 @@
 
 ## Итог
 
-В качестве ответа предоставьте подробные скриншоты по каждому пункту задания:
-- файл gitlab-ci.yml,
-- Dockerfile, 
+В качестве ответа предоставьте подробные скриншоты по каждому пункту задания:  
+[.gitlab-ci.yml](https://github.com/Lepisok/devops-netology/blob/main/3_CI_monitoring_and_settings_management/09-ci-06-gitlab/repository/.gitlab-ci.yml)  
+[Dockerfile](https://github.com/Lepisok/devops-netology/blob/main/3_CI_monitoring_and_settings_management/09-ci-06-gitlab/repository/Dockerfile)  
 - лог успешного выполнения пайплайна,
 - решенный Issue.
-
-### :bangbang: После выполнения задания выключите и удалите все задействованные ресурсы в Yandex.Cloud.
-
-## Необязательная часть
-
-Автомазируйте работу тестировщика, пусть у вас будет отдельный конвейер, который автоматически поднимает контейнер и выполняет проверку, например, при помощи curl. На основе вывода - будет приниматься решение об успешности прохождения тестирования
-
-
-
