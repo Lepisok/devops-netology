@@ -18,7 +18,8 @@
 4. Создана директория `/python_api`
 5. Скрипт из репозитория размещён в /python_api
 6. Точка вызова: запуск скрипта
-7. Если сборка происходит на ветке `master`: должен подняться pod kubernetes на основе образа `python-api`, иначе этот шаг нужно пропустить
+7. Если сборка происходит на ветке `master`: должен подняться pod kubernetes на основе образа `python-api`, иначе этот шаг нужно пропустить  
+Решение:  [.gitlab-ci.yml](https://github.com/Lepisok/devops-netology/blob/main/3_CI_monitoring_and_settings_management/09-ci-06-gitlab/repository/.gitlab-ci.yml)
 
 ### Product Owner
 
