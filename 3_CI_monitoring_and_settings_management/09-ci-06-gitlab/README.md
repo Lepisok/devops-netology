@@ -19,6 +19,8 @@
 5. Скрипт из репозитория размещён в /python_api
 6. Точка вызова: запуск скрипта
 7. Если сборка происходит на ветке `master`: должен подняться pod kubernetes на основе образа `python-api`, иначе этот шаг нужно пропустить  
+Решение:  
+[.gitlab-ci.yml](https://github.com/Lepisok/devops-netology/blob/main/3_CI_monitoring_and_settings_management/09-ci-06-gitlab/repository/.gitlab-ci.yml)  
 
 ### Product Owner
 
@@ -26,6 +28,8 @@
 1. Какой метод необходимо исправить
 2. Текст с `{ "message": "Already started" }` на `{ "message": "Running"}`
 3. Issue поставить label: feature
+Решение:  
+![img.png](img/img.png)
 
 ### Developer
 
@@ -44,7 +48,11 @@
 ## Итог
 
 В качестве ответа предоставьте подробные скриншоты по каждому пункту задания:  
+- файл gitlab-ci.yml;
+- Dockerfile; 
+- лог успешного выполнения пайплайна;
+- решённый Issue  
+Решение:  
 [.gitlab-ci.yml](https://github.com/Lepisok/devops-netology/blob/main/3_CI_monitoring_and_settings_management/09-ci-06-gitlab/repository/.gitlab-ci.yml)  
 [Dockerfile](https://github.com/Lepisok/devops-netology/blob/main/3_CI_monitoring_and_settings_management/09-ci-06-gitlab/repository/Dockerfile)  
-- лог успешного выполнения пайплайна,
-- решенный Issue.
+
