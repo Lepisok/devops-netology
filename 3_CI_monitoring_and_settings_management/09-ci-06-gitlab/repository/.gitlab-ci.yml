@@ -1,0 +1,28 @@
+stages:
+  - build
+  - deploy
+
+builder:
+  stage: build
+  variables:
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: ""
+    DOCKER_HOST: tcp://localhost:2375/
+  image: cr.yandex/yc/metadata-token-docker-helper:0.2
+  services:
+    - docker:19.03.1-dind
+  script:
+    - docker build . -t cr.yandex/crpkk782fa0rspuol4u4/centos7:RESTful_API-$CI_COMMIT_BRANCH-0.0.1
+    - docker push cr.yandex/crpkk782fa0rspuol4u4/centos7:RESTful_API-$CI_COMMIT_BRANCH-0.0.1
+
+deployer:
+  image: gcr.io/cloud-builders/kubectl:latest
+  stage: deploy
+  script:
+    - kubectl config set-cluster k8s --server="$KUBE_URL" --insecure-skip-tls-verify=true
+    - kubectl config set-credentials gitlab-admin --token="$KUBE_TOKEN"
+    - kubectl config set-context testing --cluster=k8s --user=gitlab-admin
+    - kubectl config use-context testing
+    - kubectl apply -f k8s.yaml
+  only:
+    - master
