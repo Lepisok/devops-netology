@@ -12,8 +12,8 @@ builder:
   services:
     - docker:19.03.1-dind
   script:
-    - docker build . -t cr.yandex/crpkk782fa0rspuol4u4/centos7:RESTful_API-$CI_COMMIT_BRANCH-0.0.1
-    - docker push cr.yandex/crpkk782fa0rspuol4u4/centos7:RESTful_API-$CI_COMMIT_BRANCH-0.0.1
+    - docker build . -t cr.yandex/crpkk782fa0rspuol4u4/centos7:gitlab
+    - docker push cr.yandex/crpkk782fa0rspuol4u4/centos7:gitlab
 
 deployer:
   image: gcr.io/cloud-builders/kubectl:latest
