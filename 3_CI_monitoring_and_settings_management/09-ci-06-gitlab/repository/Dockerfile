@@ -1,5 +1,6 @@
 FROM centos:7
 RUN yum install -y python3 python3-pip
+COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
 RUN mkdir -p /python-api
 COPY python-api.py /python-api/python-api.py
