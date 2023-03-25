@@ -39,8 +39,8 @@ b8bd4864bbde   grafana/grafana:6.7.2        "/run.sh"                49 seconds 
 
 Подключите поднятый вами prometheus как источник данных.
 
-Решение домашнего задания - скриншот веб-интерфейса grafana со списком подключенных Datasource.
-
+Решение домашнего задания - скриншот веб-интерфейса grafana со списком подключенных Datasource.  
+![img.png](img/img.png)
 ## Задание 2
 Изучите самостоятельно ресурсы:
 - [PromQL tutorial for beginners and humans](https://valyala.medium.com/promql-tutorial-for-beginners-9ab455142085)
@@ -53,8 +53,20 @@ b8bd4864bbde   grafana/grafana:6.7.2        "/run.sh"                49 seconds 
 - Количество свободной оперативной памяти
 - Количество места на файловой системе
 
-Для решения данного ДЗ приведите promql запросы для выдачи этих метрик, а также скриншот получившейся Dashboard.
-
+Для решения данного ДЗ приведите promql запросы для выдачи этих метрик, а также скриншот получившейся Dashboard.  
+Решение:  
+- Утилизация CPU для nodeexporter (в процентах, 100-idle)  
+100 - (avg by (instance) (rate(node_cpu_seconds_total{job="node",mode="idle"}[1m])) * 100)  
+- CPULA 1/5/15  
+node_load1{instance="node-exporter:9100",job="node"}  
+node_load5{instance="node-exporter:9100",job="node"}  
+node_load15{instance="node-exporter:9100",job="node"}  
+- Количество свободной оперативной памяти  
+node_memory_MemFree_bytes{instance="node-exporter:9100",job="node"}  
+- Количество места на файловой системе  
+node_filesystem_files_free{device="/dev/sda3",fstype="ext4",instance="node-exporter:9100",job="node"}  
+Dashboard:  
+![img.png](img/img_1.png)  
 ## Задание 3
 Создайте для каждой Dashboard подходящее правило alert (можно обратиться к первой лекции в блоке "Мониторинг").
 
