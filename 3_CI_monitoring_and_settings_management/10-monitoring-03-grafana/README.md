@@ -81,4 +81,4 @@ Dashboard:
 Далее скопируйте отображаемое json-содержимое в отдельный файл и сохраните его.
 
 В решении задания - приведите листинг этого файла.  
-[json_file]()
+[json_file](https://github.com/Lepisok/devops-netology/blob/main/3_CI_monitoring_and_settings_management/10-monitoring-03-grafana/src/My_dashboard-1679768084240.json)
