@@ -11,7 +11,7 @@
 За дополнительными материалами, вы можете обратиться в официальную документацию grafana и prometheus.
 
 В решении к домашнему заданию приведите также все конфигурации/скрипты/манифесты, которые вы 
-использовали в процессе решения задания.
+использовали в процессе решения задания.  
 Решение:  
 ```
 lepis@lepis:~/Homework/netology-homework/My_homework/devops-netology/3_CI_monitoring_and_settings_management/10-monitoring-03-grafana/src$ docker-compose ps
