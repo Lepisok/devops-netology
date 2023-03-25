@@ -12,7 +12,9 @@
 
 В решении к домашнему заданию приведите также все конфигурации/скрипты/манифесты, которые вы 
 использовали в процессе решения задания.
-
+Решение:  
+- [docker-compose.yml](https://github.com/Lepisok/devops-netology/blob/main/3_CI_monitoring_and_settings_management/10-monitoring-03-grafana/src/docker-compose.yml)  
+- [prometheus.yml](https://github.com/Lepisok/devops-netology/blob/main/3_CI_monitoring_and_settings_management/10-monitoring-03-grafana/src/prometheus/prometheus.yml)
 **В части задания 3** вы должны самостоятельно завести удобный для вас канал нотификации, например Telegram или Email
 и отправить туда тестовые события.
 
