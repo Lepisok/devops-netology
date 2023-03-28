@@ -1,0 +1,96 @@
+version: '3'
+
+services:
+  elasticsearch-warm:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.0
+    container_name: elasticsearch-warm
+    environment:
+      - node.name=elasticsearch-warm
+      - cluster.name=elasticsearch-cluster
+      - cluster.initial_master_nodes=elasticsearch-hot,elasticsearch-warm
+      - discovery.seed_hosts=elasticsearch-hot
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata_warm:/usr/share/elasticsearch/data
+    networks:
+      - elk
+
+  elasticsearch-hot:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.0
+    container_name: elasticsearch-hot
+    environment:
+      - node.name=elasticsearch-hot
+      - cluster.name=elasticsearch-cluster
+      - cluster.initial_master_nodes=elasticsearch-hot,elasticsearch-warm
+      - discovery.seed_hosts=elasticsearch-warm
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata_hot:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    depends_on:
+      - elasticsearch-warm
+    networks:
+      - elk
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.15.0
+    container_name: kibana
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch-hot:9200
+      ELASTICSEARCH_HOSTS: '["http://elasticsearch-hot:9200","http://elasticsearch-warm:9200"]'
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch-hot
+      - elasticsearch-warm
+    networks:
+      - elk
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.15.0
+    container_name: logstash
+    volumes:
+      - ./config/logstash.conf:/etc/logstash/conf.d/logstash.conf:Z
+      - ./config/logstash.yml:/opt/logstash/config/logstash.yml:Z
+    ports:
+      - "5000:5000"
+    depends_on:
+      - elasticsearch-hot
+      - elasticsearch-warm
+    networks:
+      - elk
+
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:7.15.0
+    container_name: filebeat
+    privileged: true
+    user: root
+    command:
+      - "--strict.perms=false"
+    volumes:
+      - ./config/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock:Z
+    depends_on:
+      - logstash
+    networks:
+      - elk
+
+volumes:
+  esdata_warm:
+  esdata_hot:
+
+networks:
+  elk:
+    driver: bridge
