@@ -39,10 +39,16 @@ Filebeat следует сконфигурировать для отправки
 выполнения данного задания.
 
 Результатом выполнения данного задания должны быть:
-- скриншот `docker ps` через 5 минут после старта всех контейнеров (их должно быть 5)
-- скриншот интерфейса kibana
-- docker-compose манифест (если вы не использовали директорию help)
-- ваши yml конфигурации для стека (если вы не использовали директорию help)
+- скриншот `docker ps` через 5 минут после старта всех контейнеров (их должно быть 5)  
+![img.png](img/img.png)
+- скриншот интерфейса kibana  
+![img_1.png](img/img_1.png)
+- docker-compose манифест (если вы не использовали директорию help)  
+[docker-compose.yml](https://github.com/Lepisok/devops-netology/blob/main/3_CI_monitoring_and_settings_management/10-monitoring-04-elk/src/docker-compose.yml)
+- ваши yml конфигурации для стека (если вы не использовали директорию help)  
+[filebeat.yml](https://github.com/Lepisok/devops-netology/blob/main/3_CI_monitoring_and_settings_management/10-monitoring-04-elk/src/config/filebeat.yml)   
+[logstash.conf](https://github.com/Lepisok/devops-netology/blob/main/3_CI_monitoring_and_settings_management/10-monitoring-04-elk/src/config/logstash.conf)  
+[logstash.yml](https://github.com/Lepisok/devops-netology/blob/main/3_CI_monitoring_and_settings_management/10-monitoring-04-elk/src/config/logstash.yml)  
 
 ## Задание 2
 
