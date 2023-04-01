@@ -96,6 +96,8 @@ services:
     volumes:
       - ./pinger/run.py:/opt/run.py:Z
     entrypoint: python3 /opt/run.py
+    networks:
+      - elk
 
 volumes:
   esdata_warm:
