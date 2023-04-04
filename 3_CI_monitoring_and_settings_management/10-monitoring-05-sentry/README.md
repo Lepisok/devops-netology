@@ -56,11 +56,4 @@ Free Cloud account имеет ограничения:
 Решение:  
 ## Issues  
 ![img.png](img/img_4.png)  
-
----
-
-### Как оформить решение задания
-
-Выполненное домашнее задание пришлите в виде ссылки на .md-файл в вашем репозитории.
-
----
+[test.py](https://github.com/Lepisok/devops-netology/blob/main/3_CI_monitoring_and_settings_management/10-monitoring-05-sentry/src/test.py)
