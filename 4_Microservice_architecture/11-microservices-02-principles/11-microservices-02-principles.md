@@ -23,6 +23,7 @@
 | Amazon API Gateway           |          +          |           +          |         +         |
 | Nginx API Gateway            |          +          |           +          |         +         |
 | Gravitee API Gateway         |          +          |           +          |         +         |
+
 Полезные ссылки:  
 1) https://github.com/TykTechnologies/tyk (Tyk API Gateway)  
 2) https://github.com/motiv-labs/janus    (Janus)  
