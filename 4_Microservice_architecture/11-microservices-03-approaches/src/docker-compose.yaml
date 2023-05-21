@@ -2,6 +2,8 @@ volumes:
   data:
   prometheus-data:
   grafana_data:
+  esdata_warm:
+  esdata_hot:
 
 services:
   storage:
@@ -24,24 +26,50 @@ services:
       timeout: 20s
       retries: 3
 
-  elasticsearch:
+  elasticsearch-warm:
     image: elasticsearch:7.17.9
-    container_name: elasticsearch
+    container_name: elasticsearch-warm
     environment:
+      - node.name=elasticsearch-warm
+      - cluster.name=elasticsearch-cluster
+      - cluster.initial_master_nodes=elasticsearch-hot,elasticsearch-warm
+      - discovery.seed_hosts=elasticsearch-hot
+      - bootstrap.memory_lock=true
       - xpack.security.enabled=false
-      - discovery.type=single-node
-    env_file:
-      - .env
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
         hard: -1
-      nofile:
-        soft: 65536
-        hard: 65536
+    volumes:
+      - esdata_warm:/usr/share/elasticsearch/data
+    networks:
+      - test
+
+  elasticsearch-hot:
+    image: elasticsearch:7.17.9
+    container_name: elasticsearch-hot
+    environment:
+      - node.name=elasticsearch-hot
+      - cluster.name=elasticsearch-cluster
+      - cluster.initial_master_nodes=elasticsearch-hot,elasticsearch-warm
+      - discovery.seed_hosts=elasticsearch-warm
+      - bootstrap.memory_lock=true
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata_hot:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
-      - 9300:9300
+      - 9300:9200
+    depends_on:
+      - elasticsearch-warm
+    networks:
+      - test
   
   vector:
     container_name: vector
@@ -54,16 +82,21 @@ services:
       - .env
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - ./logs/vector.toml:/etc/vector/vector.toml
     networks:
       - test
 
   kibana:
     image: kibana:7.17.9
     container_name: kibana
-    env_file:
-      - .env
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch-hot:9200
+      ELASTICSEARCH_HOSTS: '["http://elasticsearch-hot:9200","http://elasticsearch-warm:9200"]'
     ports:
       - 5601:5601
+    depends_on:
+      - elasticsearch-hot
+      - elasticsearch-warm
     networks:
       - test
 
