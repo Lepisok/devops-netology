@@ -25,3 +25,35 @@ spec:
         env:
         - name: HTTP_PORT
           value: "8080"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-multitool
+  namespace: default
+spec:
+  ports:
+  - name: nginx-service
+    port: 80
+  - name: multitool-service
+    port: 8080
+  selector:
+    app: nginx-multitool
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: multitool-pod
+  name: multitool-pod
+  namespace: default
+spec:
+  containers:
+  - image: praqma/network-multitool:latest
+    name: multitool-pod
+    imagePullPolicy: IfNotPresent
+    env:
+    - name: HTTP_PORT
+      value: "9300"
