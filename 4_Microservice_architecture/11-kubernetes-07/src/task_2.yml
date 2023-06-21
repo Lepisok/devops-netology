@@ -3,10 +3,10 @@ kind: Deployment
 metadata:
   name: nginx
   labels:
-    app: nginx
+    app.kubernetes.io/name: nginx
   namespace: default
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: nginx
@@ -17,7 +17,24 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:1.24
-        imagePullPolicy: IfNotPresent
-        livenessProbe:
-          
+        image: nginx:1.14.2
+      initContainers:
+      - name: nginx-check
+        image: busybox:1.28
+        command: ['sh', '-c', 'until nslookup nginx-service.default.svc.cluster.local; do echo waiting for nginx-service; sleep 2; done;']
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+  labels:
+    app: nginx
+  namespace: default
+spec:
+  selector:
+    app: nginx
+  ports:
+  - name: nginx-port
+    protocol: TCP
+    port: 80
+    targetPort: port
