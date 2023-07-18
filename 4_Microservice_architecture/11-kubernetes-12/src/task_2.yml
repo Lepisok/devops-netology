@@ -1,0 +1,91 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-index
+data:
+  index.html:  |
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <title>DEVOPS-Netology</title>
+      </head>
+      <body>
+        <h1>DEVOPS-Netology</h1>
+      </body>
+
+---
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: nginx-tls-secret
+type: kubernetes.io/tls	
+data:
+  tls.crt: MIIDDTCCAfWgAwIBAgIUH90FW/2d/+f6tJS5wjSb1GPpuYAwDQYJKoZIhvcNAQELBQAwFjEUMBIGA1UEAwwLZm9vLmJhci5jb20wHhcNMjMwNzE4MTcxMDI5WhcNMjQwNzE3MTcxMDI5WjAWMRQwEgYDVQQDDAtmb28uYmFyLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMURLpiXFGIy4iI4rF1xNqBc0A1Lyh9je0jOu50IcY4yADp95U/ctiehCqQWhNq69cEf/Hv6sr3HaX4UG7BpST78iYsQIFPrnwT5wWJXrqQWEfrEPSbtHO9F7EvKANKhHeivPV+053XmDzjS1BwL3mx+agu4UJZKSlHmzaAJpNXkIrcQdeD+eDFBNBl35yKgfa6ZXCaXbbWeAz6GYpVtOFvW2TXIPZYS/Bf2xl46K3qCXCWmPkK3RMaW0eRdIpENio8MQPN5S8z/DDKSFEZXRs4MPsWJx8PggjpaX6583mwnNvyrwX+3XiTS68fqffhuHMJXkwXShkJ3Eo+pKKGQuRcCAwEAAaNTMFEwHQYDVR0OBBYEFDhmEdI0vO2NzbFtbe58/xkTqrC/MB8GA1UdIwQYMBaAFDhmEdI0vO2NzbFtbe58/xkTqrC/MA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcNAQELBQADggEBAAcIfZHb4+dz0HKvWERSXAkGqqr6gMCUVdFn/WAN19ZzStQejIzAJ6YktGXpVCEy4PQk4OeiNxb5qBZGGn/xQH2YPNq1gO/zXN2Fai11qI6VwUltrrmV9P7c5wHTH5n/6+HVYLbTQzL6zObFCxxulVQ3QfTitlcQNkmDTUJpRUJrJq4amnwZgRB9HS5eUN3+vvJXcCNUIOV6T3vA00N1Cenj8FUSKhfCqs+8WbmR3M2rAi+cA3/dcmDVSqLsxe7mjOZkH5jg+fujySfKBjFgP62Or9v9nqDurEsD+K9zE/qs6NYJjphZgvvY22mPLhdtByk30Ix4IaH2wcfcDIVttPA= 
+  tls.key: MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDFES6YlxRiMuIiOKxdcTagXNANS8ofY3tIzrudCHGOMgA6feVP3LYnoQqkFoTauvXBH/x7+rK9x2l+FBuwaUk+/ImLECBT658E+cFiV66kFhH6xD0m7RzvRexLygDSoR3orz1ftOd15g840tQcC95sfmoLuFCWSkpR5s2gCaTV5CK3EHXg/ngxQTQZd+cioH2umVwml221ngM+hmKVbThb1tk1yD2WEvwX9sZeOit6glwlpj5Ct0TGltHkXSKRDYqPDEDzeUvM/wwykhRGV0bODD7FicfD4II6Wl+ufN5sJzb8q8F/t14k0uvH6n34bhzCV5MF0oZCdxKPqSihkLkXAgMBAAECggEAFNw7a85HoMLKH909QaxDoA4IZ/U8hr4ScCPncDlTQT4XEBoA4Byjm5D3KLoe2MMu/dZ+SjwWF54Nk1mwOf2rJzkMRjraxodhOeGbkDwVMda0PdtFWI2DoUBsQZ7hyhS2rx7TBwKF+HugjjSjB0+qUnRp5/uxbCHzuV+5JyuzgICKKk53B3P7eGWUAWQZ/wo5730nOzYivbPwaSNR61QRsPu1VyjBPnRkfhqXQ/wCEJupBzsVeNX4pHndODvQpL+NERGU9v0GKmkD9V/wCdf1vICsqP37wkTy12tr4GXGL7yCfC0qjvQ7UkhivKl4RC7Ypdu6hZrBoglCYYhnNpdwYQKBgQDm10zEceTF5v1RI9B7caPOEonpdb/aDLKeX6GWMxr4kOuZCP9iFiriYrERUV/HJ79LRydA+C8ZOLAv0jKd2V71Qu5rYtX2LtR1l5HNjeCZbvKTle8tDUJR/gH6j4L7yGFPzBatPbbGasm07HEh1Ddd3TYXOhYETxN+Stc3IoleEwKBgQDai45O9VxnyKCeQwuejJGvGn6xT9zqwQc2unHY4dRmrENvG0oleuB2tPYx4UldtRpjke7ZhiL0mnQTmhL3oixgO/qUWc1ouq9MUfB6tgDm+GyhVUs2k8Gr6rvCterVGkBVxXtLaMTstHAPECmE97frpKlqbWrcHAWWVKivKMcJbQKBgA1D1f974/+TVH8zJanST+1pl085Gvs2u5TqPejZqvUZrtAuei5yw6gar74lBPH20MFMp27OVDaI0WcOFyaG9TP20qiNF2p8Km1PdmtvebaXb40XkpTuLB92DzsMwCQj0aO6QJtX7obcYBbrd1zQSxYzvgX7qoQ43w/k0RU0ANzNAoGALs48yERcag3Z+Is7bdWFTg9KmwcTtWNp/BqqT1zudJ7oQl+B3c0XTdUr9Trez6b9491ZXlUQH3sE6T3SWh7tih7OZ/9jss5oxNu3uVBJmS4TdeoilanHjN5VIDp99O4OYVBOO7RQmLF8Xn2Dpuq3BUzay+RrQoDt4Wh4SCtflXECgYArsHfY4NFmxvOrggQflFPn3qXoid+Wnd4eBt32cmE8ps4BjpizZigpajAQTShdscQ/GGugpXSrcJVYhry8EzF+TBWHLZ9DMOH72yINj51iBcIOqlKOcNvT20VQJKKp05HrHjUhtaADEemIVRs5V+CbT4Tzxp2jJVpR5vUPOdAVag==
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.24
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+        - name: index-volume
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: index-volume
+        configMap:
+          name: nginx-index
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-svc
+spec:
+  ports:
+  - name: nginx-port
+    port: 433
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: nginx
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /  
+spec:
+  tls:
+  - hosts:
+    - 10.1.221.240
+    secretName: nginx-tls-secret
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: nginx-svc
+            port: 
+              name: nginx-port
