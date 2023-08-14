@@ -1,0 +1,68 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+  namespace: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: multitool
+        image: praqma/network-multitool:latest
+        imagePullPolicy: IfNotPresent
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  labels:
+    app: backend
+  namespace: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: multitool
+        image: praqma/network-multitool:latest
+        imagePullPolicy: IfNotPresent
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cache
+  labels:
+    app: cache
+  namespace: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cache
+  template:
+    metadata:
+      labels:
+        app: cache
+    spec:
+      containers:
+      - name: cache
+        image: praqma/network-multitool:latest
+        imagePullPolicy: IfNotPresent
