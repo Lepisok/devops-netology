@@ -11,5 +11,5 @@ variable "zone" {
 }
 
 variable "image_id" {
-  default = "fd8h5v894psivbl4t2dn" ## Ubuntu 20.04 LTS
+  default = "fd8pecdhv50nec1qf9im" ## Ubuntu 22.04 LTS
 }

@@ -103,3 +103,39 @@ resource "yandex_compute_instance" "vm-3" {
     create_before_destroy = true
   }
 }
+
+
+resource "yandex_compute_instance" "ansible" {
+  name        = "ansible"
+  hostname    = "ansible"
+  zone        = "ru-central1-a"
+  description = "ansible"
+  platform_id = "standard-v2"
+
+  resources {
+    cores     = 4
+    memory    = 4
+  }
+
+  boot_disk {
+    initialize_params {
+      image_id    = "${var.image_id}"    ## Ubuntu 20.04 LTS
+      type        = "network-nvme"
+      size        = "30"
+    }
+  }
+
+  network_interface {
+    subnet_id = yandex_vpc_subnet.ansible.id
+    nat       = true
+  }
+
+  metadata = {
+    user-data   = "${file("./user.txt")}"
+    description = "The file includes the users to be added to the VM"
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
